@@ -28,9 +28,8 @@ class FileX {
      * @param  string $filename Path to file
      * @return void
      */
-    function __construct($filename) {
-        $this->filename = $filename;
-        $this->open();
+    function __construct($filename=null) {
+        $this->open($filename);
     }
     
     /**
@@ -38,8 +37,11 @@ class FileX {
      * Opens the $filename in r+ mode
      * @return void
      */
-    private function open() {
-        $this->current_file = fopen($this->filename, 'r+') or die('Unable to open file');
+    public function open($filename=null) {
+        if ( ! empty($filename) ) {
+            $this->filename = $filename;
+            $this->current_file = fopen($this->filename, 'r+') or die('Unable to open file');
+        }
     }
     
     /**
@@ -48,7 +50,11 @@ class FileX {
      * @param  bool $reverse Outputs lines in reverse
      * @return void
      */
-    public function read($reverse=false) {
+    public function read($filepath=null, $reverse=false) {
+        if ( ! empty($filepath) ) {
+            $this->open($filepath);
+        }
+
         if($reverse) {
             return implode('', $this->read_reverse());
         } else {
