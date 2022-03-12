@@ -3,7 +3,7 @@
 namespace M133;
 
 require_once __DIR__ . '/lib/Router.php';
-require_once __DIR__ . '/lib/TemplateY.php';
+require_once __DIR__ . '/lib/Template.php';
 
 use M133\ExpressRouter as Router;
 use M133\Template as Tpl;
