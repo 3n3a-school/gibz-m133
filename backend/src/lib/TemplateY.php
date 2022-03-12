@@ -38,9 +38,10 @@ class TemplateY {
      * render
      * Renders a template
      * @param  array $data Array of key:value render vars
+     * @param  bool $return_string Defines if should be returned or echoed
      * @return void
      */
-    public function render($data) {
+    public function render($data, $return_string=FALSE) {
         $tag_matches = $this->match($this->template_tag_re);
         $rendered_tags = array();
 
@@ -57,7 +58,11 @@ class TemplateY {
             $this->replace($tag, $tag_key, $data);
         }
 
-        return $this->file_contents;
+        if ($return_string) {
+            return $this->file_contents;
+        } else {
+            echo $this->file_contents;
+        }
     }
     
     /**
