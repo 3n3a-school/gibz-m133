@@ -54,6 +54,10 @@ class RouterHelper {
 
         return $method;
     }
+
+    public static function isHead() {
+        $_SERVER['REQUEST_METHOD'] == 'HEAD'
+    }
 }
 
 class ExpressRouter
@@ -74,71 +78,69 @@ class ExpressRouter
 
     public function registerMiddleware($methods, $pattern, $function)
     {
-        $pattern = $this->baseRoute . '/' . trim($pattern, '/');
-        $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
-
-        foreach (explode('|', $methods) as $method) {
-            $this->middlewareRoutes[$method][] = array(
-                'pattern' => $pattern,
-                'function' => $function,
-            );
-        }
+        $this->match($methods, $pattern, $function, true);
     }
 
-
-    public function match($methods, $pattern, $function)
+    public function match($methods, $pattern, $function, $isMiddleware=false)
     {
         $pattern = $this->baseRoute . '/' . trim($pattern, '/');
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
-        foreach (explode('|', $methods) as $method) {
-            $this->routes[$method][] = array(
-                'pattern' => $pattern,
-                'function' => $function,
-            );
+        foreach ($methods as $method) {
+            if ( $isMiddleware ) {
+                $this->middlewareRoutes[$method][] = array(
+                  'pattern' => $pattern,
+                  'function' => $function,
+                );
+            } else {
+                $this->routes[$method][] = array(
+                  'pattern' => $pattern,
+                  'function' => $function,
+                );
+            }
         }
     }
 
 
     public function all($pattern, $function)
     {
-        $this->match('GET|POST|PUT|DELETE|OPTIONS|PATCH|HEAD', $pattern, $function);
+        $this->match(['GET','POST','PUT','DELETE','OPTIONS','PATCH','HEAD'], $pattern, $function);
     }
 
 
     public function get($pattern, $function)
     {
-        $this->match('GET', $pattern, $function);
+        $this->match(['GET'], $pattern, $function);
     }
 
 
     public function post($pattern, $function)
     {
-        $this->match('POST', $pattern, $function);
+        $this->match(['POST'], $pattern, $function);
     }
 
 
     public function patch($pattern, $function)
     {
-        $this->match('PATCH', $pattern, $function);
+        $this->match(['PATCH'], $pattern, $function);
     }
 
 
     public function delete($pattern, $function)
     {
-        $this->match('DELETE', $pattern, $function);
+        $this->match(['DELETE'], $pattern, $function);
     }
 
 
     public function put($pattern, $function)
     {
-        $this->match('PUT', $pattern, $function);
+        $this->match(['PUT'], $pattern, $function);
     }
 
 
     public function options($pattern, $function)
     {
-        $this->match('OPTIONS', $pattern, $function);
+        $this->match(['OPTIONS'], $pattern, $function);
     }
 
     
@@ -158,19 +160,6 @@ class ExpressRouter
         call_user_func($function);
 
         $this->baseRoute = $currentBaseRoute;
-    }
-
-    public function setNamespace($namespace)
-    {
-        if (is_string($namespace)) {
-            $this->namespace = $namespace;
-        }
-    }
-
-
-    public function getNamespace()
-    {
-        return $this->namespace;
     }
 
     public function run($callback = null)
@@ -195,7 +184,7 @@ class ExpressRouter
             }
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
+        if ( RouterHelper::isHead() ) {
             ob_end_clean();
         }
 
@@ -315,29 +304,6 @@ class ExpressRouter
         if (is_callable($function)) {
             call_user_func_array($function, $params);
         }
-
-        elseif (stripos($function, '@') !== false) {
-                list($controller, $method) = explode('@', $function);
-
-                if ($this->getNamespace() !== '') {
-                $controller = $this->getNamespace() . '\\' . $controller;
-            }
-
-            try {
-                $reflectedMethod = new \ReflectionMethod($controller, $method);
-                        if ($reflectedMethod->isPublic() && (!$reflectedMethod->isAbstract())) {
-                    if ($reflectedMethod->isStatic()) {
-                        forward_static_call_array(array($controller, $method), $params);
-                    } else {
-                                        if (\is_string($controller)) {
-                            $controller = new $controller();
-                        }
-                        call_user_func_array(array($controller, $method), $params);
-                    }
-                }
-            } catch (\ReflectionException $reflectionException) {
-                    }
-        }
     }
 
 
@@ -368,10 +334,5 @@ class ExpressRouter
         }
 
         return $this->serverBasePath;
-    }
-
-    public function setBasePath($serverBasePath)
-    {
-        $this->serverBasePath = $serverBasePath;
     }
 }
