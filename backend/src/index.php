@@ -8,7 +8,7 @@ require_once __DIR__ . '/lib/TemplateY.php';
 use M133\Router as Router;
 use M133\TemplateY as Tpl;
 
-$views_base = __DIR__ . '/views/';
+$views_base = __DIR__ . '/frontend/views/';
 
 $router = new Router();
 $templ = new Tpl();
