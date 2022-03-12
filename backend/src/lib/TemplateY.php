@@ -18,10 +18,10 @@ class TemplateY {
  
     private $filepath = "";
     private $filehandler = NULL;
-    private $file_contents = "";
+    private $fileContents = "";
 
-    private $template_tag_re = '/{{(.*)}}/m';
-    private $action_delimiter = ':';
+    private $templateTagRegex = '/{{(.*)}}/m';
+    private $actionDelimiter = ':';
     
     /**
      * __construct
@@ -43,19 +43,19 @@ class TemplateY {
      */
     public function render($filename, $data, $return_string=FALSE) {
         $this->filepath = $filename;
-        $this->file_contents = $this->filehandler->read($filename);
+        $this->fileContents = $this->filehandler->read($filename);
 
-        $tag_matches = $this->match($this->template_tag_re, $this->file_contents);
-        $this->file_contents = $this->render_tags($tag_matches, $data, $this->file_contents);
+        $tag_matches = $this->match($this->templateTagRegex, $this->fileContents);
+        $this->fileContents = $this->renderTags($tag_matches, $data, $this->fileContents);
 
         if ($return_string) {
-            return $this->file_contents;
+            return $this->fileContents;
         } else {
-            echo $this->file_contents;
+            echo $this->fileContents;
         }
     }
 
-    private function render_tags($matched_tags, $data, $content) {
+    private function renderTags($matched_tags, $data, $content) {
         $rendered_tags = array();
 
         foreach ($matched_tags as $tag) {
@@ -96,8 +96,8 @@ class TemplateY {
      */
     private function replace($template_tag, $data_key, $data_arr, $content) {
 
-        if (stristr($data_key, $this->action_delimiter)) {
-            [$key_action, $key_name] = explode( $this->action_delimiter, $data_key );
+        if (stristr($data_key, $this->actionDelimiter)) {
+            [$key_action, $key_name] = explode( $this->actionDelimiter, $data_key );
         } else {
             $key_action = "v";
             $key_name = $data_key;
@@ -112,8 +112,8 @@ class TemplateY {
                 );
 
                 // render tags in subview
-                $matched_tags = $this->match($this->template_tag_re, $replacement);
-                $replacement = $this->render_tags($matched_tags, $data_arr, $replacement);
+                $matched_tags = $this->match($this->templateTagRegex, $replacement);
+                $replacement = $this->renderTags($matched_tags, $data_arr, $replacement);
                 break;
             
             case 'v':
