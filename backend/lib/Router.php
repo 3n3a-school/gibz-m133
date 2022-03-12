@@ -9,8 +9,7 @@ namespace M133;
 
 /**
  * PHP Router
- * Mountable routes, shorthands for GET, POST...
- * also has 404 callback
+ * Routes requests (middleware then routes)
  */
 class Router
 {
