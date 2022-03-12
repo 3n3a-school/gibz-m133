@@ -11,7 +11,7 @@ namespace M133;
  * FileHandler
  * Wrapper for easy file handling
  */
-class FileX {
+class Filehandler {
     /**
      * @var string The path to the file which is to be worked on
      */

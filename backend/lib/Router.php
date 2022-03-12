@@ -12,6 +12,7 @@ class RouterHelper {
     /**
      * getRequestHeaders
      * Returns an array of headers
+     * @return array Array of headers
      */
     public static function getRequestHeaders()
     {
@@ -33,18 +34,23 @@ class RouterHelper {
 
         return $headers;
     }
-    
+        
+    /**
+     * getRequestMethod
+     * 
+     * @return string Request method
+     */
     public static function getRequestMethod()
     {
         $method = $_SERVER['REQUEST_METHOD'];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'HEAD') {
+        if ( self::isHead() ) {
             ob_start();
             $method = 'GET';
         }
 
-        elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $headers = $this->getRequestHeaders();
+        elseif ( self::isPost() ) {
+            $headers = self::getRequestHeaders();
 
             // overriding of method via header
             if (isset($headers['X-HTTP-Method-Override']) && in_array($headers['X-HTTP-Method-Override'], array('PUT', 'DELETE', 'PATCH'))) {
@@ -55,8 +61,23 @@ class RouterHelper {
         return $method;
     }
 
+    /**
+     * Shorthands for checking if is<Method>
+     */
     public static function isHead() {
-        $_SERVER['REQUEST_METHOD'] == 'HEAD'
+        $_SERVER['REQUEST_METHOD'] == 'HEAD';
+    }
+    
+    public static function isGet() {
+        $_SERVER['REQUEST_METHOD'] == 'GET';
+    }
+    
+    public static function isPost() {
+        $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+    
+    public static function isDelete() {
+        $_SERVER['REQUEST_METHOD'] == 'DELETE';
     }
 }
 
@@ -73,76 +94,85 @@ class ExpressRouter
     private $requestedMethod = '';
 
     private $serverBasePath;
-
-    private $namespace = '';
-
-    public function registerMiddleware($methods, $pattern, $function)
-    {
-        $this->match($methods, $pattern, $function, true);
-    }
-
+    
+    /**
+     * match
+     * Creates routes from method, match-pattern and a function
+     * @param  mixed $methods
+     * @param  mixed $pattern
+     * @param  mixed $function
+     * @param  mixed $isMiddleware
+     * @return void
+     */
     public function match($methods, $pattern, $function, $isMiddleware=false)
     {
         $pattern = $this->baseRoute . '/' . trim($pattern, '/');
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
         foreach ($methods as $method) {
+            $routeMatch = array(
+                'pattern' => $pattern,
+                'function' => $function,
+            );
+
             if ( $isMiddleware ) {
-                $this->middlewareRoutes[$method][] = array(
-                  'pattern' => $pattern,
-                  'function' => $function,
-                );
+                $this->middlewareRoutes[$method][] = $routeMatch;
             } else {
-                $this->routes[$method][] = array(
-                  'pattern' => $pattern,
-                  'function' => $function,
-                );
+                $this->routes[$method][] = $routeMatch;
             }
         }
     }
+    
+    /**
+     * registerMiddleware
+     * Registers middleware routes, forwards to match function
+     * @param  mixed $methods
+     * @param  mixed $pattern
+     * @param  mixed $function
+     * @return void
+     */
+    public function registerMiddleware($methods, $pattern, $function)
+    {
+        $this->match($methods, $pattern, $function, true);
+    }
 
-
+    /**
+     * Shorthands for matching all, get, post...
+     */
     public function all($pattern, $function)
     {
         $this->match(['GET','POST','PUT','DELETE','OPTIONS','PATCH','HEAD'], $pattern, $function);
     }
-
 
     public function get($pattern, $function)
     {
         $this->match(['GET'], $pattern, $function);
     }
 
-
     public function post($pattern, $function)
     {
         $this->match(['POST'], $pattern, $function);
     }
-
 
     public function patch($pattern, $function)
     {
         $this->match(['PATCH'], $pattern, $function);
     }
 
-
     public function delete($pattern, $function)
     {
         $this->match(['DELETE'], $pattern, $function);
     }
-
 
     public function put($pattern, $function)
     {
         $this->match(['PUT'], $pattern, $function);
     }
 
-
     public function options($pattern, $function)
     {
         $this->match(['OPTIONS'], $pattern, $function);
     }
-
     
     /**
      * mount
@@ -161,20 +191,29 @@ class ExpressRouter
 
         $this->baseRoute = $currentBaseRoute;
     }
-
+    
+    /**
+     * run
+     *
+     * @param  mixed $callback
+     * @return bool If more than 1 route was handled
+     */
     public function run($callback = null)
     {
         $this->requestedMethod = RouterHelper::getRequestMethod();
 
+        // run middleware routes if there are any
         if (isset($this->middlewareRoutes[$this->requestedMethod])) {
             $this->handle($this->middlewareRoutes[$this->requestedMethod]);
         }
 
+        // handle "normal" routes
         $numberHandled = 0;
         if (isset($this->routes[$this->requestedMethod])) {
             $numberHandled = $this->handle($this->routes[$this->requestedMethod], true);
         }
 
+        // if no routes were handled trigger Not Found, otherwise callback
         if ($numberHandled === 0) {
             $this->triggerNotFoundPage($this->routes[$this->requestedMethod]);
         }
@@ -190,7 +229,14 @@ class ExpressRouter
 
         return $numberHandled !== 0;
     }
-
+    
+    /**
+     * setNotFoundPage
+     *
+     * @param  mixed $match_function
+     * @param  mixed $function
+     * @return void
+     */
     public function setNotFoundPage($match_function, $function = null)
     {
       if (!is_null($function)) {
@@ -210,7 +256,7 @@ class ExpressRouter
 
               $matches = [];
 
-              $is_match = $this->patternMatches($route_pattern, $this->getCurrentUri(), $matches, PREG_OFFSET_CAPTURE);
+              $is_match = $this->patternMatches($route_pattern, $this->getCurrentUrl(), $matches, PREG_OFFSET_CAPTURE);
 
               if ($is_match) {
 
@@ -258,7 +304,7 @@ class ExpressRouter
     {
         $numberHandled = 0;
 
-        $uri = $this->getCurrentUri();
+        $uri = $this->getCurrentUrl();
 
         foreach ($routes as $route) {
 
@@ -283,7 +329,7 @@ class ExpressRouter
 
                 ++$numberHandled;
 
-                        if ($quitAfterRun) {
+                if ($quitAfterRun) {
                     break;
                 }
             }
@@ -307,7 +353,7 @@ class ExpressRouter
     }
 
 
-    public function getCurrentUri()
+    public function getCurrentUrl()
     {
         $uri = substr(
             rawurldecode($_SERVER['REQUEST_URI']), 

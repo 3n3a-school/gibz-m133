@@ -7,14 +7,14 @@
  */
 namespace M133;
 
-require_once __DIR__ . '/FileX.php';
+require_once __DIR__ . '/Filehandler.php';
 
 /**
  * TemplateY
  * Wrapper for easy templating
  * @example An example template tag `{{name}}`
  */
-class TemplateY {
+class Template {
  
     private $filepath = "";
     private $filehandler = NULL;
@@ -30,7 +30,7 @@ class TemplateY {
      * @return void
      */
     function __construct() {
-        $this->filehandler = new \M133\FileX();
+        $this->filehandler = new \M133\Filehandler();
     }
     
     /**

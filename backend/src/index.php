@@ -5,15 +5,15 @@ namespace M133;
 require_once __DIR__ . '/lib/Router.php';
 require_once __DIR__ . '/lib/TemplateY.php';
 
-use M133\RRouter as Router;
-use M133\TemplateY as Tpl;
+use M133\ExpressRouter as Router;
+use M133\Template as Tpl;
 
 $views_base = __DIR__ . '/frontend/views/';
 
 $router = new Router();
 $templ = new Tpl();
 
-$router->middleware('GET', '/.*', function () {
+$router->registerMiddleware(['GET'], '/.*', function () {
     header('X-Powered-By: eServer');
 });
 
