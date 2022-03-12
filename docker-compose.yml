@@ -1,0 +1,35 @@
+version: '3'
+services:
+    webserver:
+        container_name: webserver
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./backend/src:/var/www/html/
+        environment:
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_USER: m133
+            DB_PASS: m133
+            DB_DB: m133
+        ports:
+            - 8002:80
+        networks:
+            - m133
+    db:
+        container_name: db
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: m133
+            MYSQL_DATABASE: m133
+            MYSQL_USER: m133
+            MYSQL_PASSWORD: m133
+        networks:
+            - m133
+
+networks:
+    m133:
