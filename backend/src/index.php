@@ -13,7 +13,7 @@ $views_base = __DIR__ . '/frontend/views/';
 $router = new Router();
 $templ = new Tpl();
 
-$router->before('GET', '/.*', function () {
+$router->middleware('GET', '/.*', function () {
     header('X-Powered-By: eServer');
 });
 

@@ -9,6 +9,7 @@ services:
             - db
         volumes:
             - ./backend/src:/var/www/html/
+            - ./backend/lib:/var/www/html/lib
             - ./frontend:/var/www/html/frontend/
         environment:
             DB_HOST: db

@@ -14,9 +14,9 @@ namespace M133;
  */
 class Router
 {
-    private $afterRoutes = array();
+    private $routes = array();
 
-    private $beforeRoutes = array();
+    private $middlewareRoutes = array();
 
     protected $notFoundCallback = [];
 
@@ -28,13 +28,13 @@ class Router
 
     private $namespace = '';
 
-    public function before($methods, $pattern, $function)
+    public function middleware($methods, $pattern, $function)
     {
         $pattern = $this->baseRoute . '/' . trim($pattern, '/');
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
         foreach (explode('|', $methods) as $method) {
-            $this->beforeRoutes[$method][] = array(
+            $this->middlewareRoutes[$method][] = array(
                 'pattern' => $pattern,
                 'function' => $function,
             );
@@ -48,7 +48,7 @@ class Router
         $pattern = $this->baseRoute ? rtrim($pattern, '/') : $pattern;
 
         foreach (explode('|', $methods) as $method) {
-            $this->afterRoutes[$method][] = array(
+            $this->routes[$method][] = array(
                 'pattern' => $pattern,
                 'function' => $function,
             );
@@ -97,7 +97,14 @@ class Router
         $this->match('OPTIONS', $pattern, $function);
     }
 
-
+    
+    /**
+     * mount
+     * Mounts a given route, allows for separating routers
+     * @param  mixed $baseRoute
+     * @param  mixed $function
+     * @return void
+     */
     public function mount($baseRoute, $function)
     {
         $currentBaseRoute = $this->baseRoute;
@@ -117,7 +124,7 @@ class Router
         if (function_exists('getallheaders')) {
             $headers = getallheaders();
 
-                if ($headers !== false) {
+            if ($headers !== false) {
                 return $headers;
             }
         }
@@ -142,6 +149,8 @@ class Router
 
         elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $headers = $this->getRequestHeaders();
+
+            // overriding of method via header
             if (isset($headers['X-HTTP-Method-Override']) && in_array($headers['X-HTTP-Method-Override'], array('PUT', 'DELETE', 'PATCH'))) {
                 $method = $headers['X-HTTP-Method-Override'];
             }
@@ -167,17 +176,17 @@ class Router
     {
         $this->requestedMethod = $this->getRequestMethod();
 
-        if (isset($this->beforeRoutes[$this->requestedMethod])) {
-            $this->handle($this->beforeRoutes[$this->requestedMethod]);
+        if (isset($this->middlewareRoutes[$this->requestedMethod])) {
+            $this->handle($this->middlewareRoutes[$this->requestedMethod]);
         }
 
         $numberHandled = 0;
-        if (isset($this->afterRoutes[$this->requestedMethod])) {
-            $numberHandled = $this->handle($this->afterRoutes[$this->requestedMethod], true);
+        if (isset($this->routes[$this->requestedMethod])) {
+            $numberHandled = $this->handle($this->routes[$this->requestedMethod], true);
         }
 
         if ($numberHandled === 0) {
-            $this->trigger404($this->afterRoutes[$this->requestedMethod]);
+            $this->trigger404($this->routes[$this->requestedMethod]);
         }
         else {
             if ($callback && is_callable($callback)) {
@@ -247,7 +256,14 @@ class Router
 
       return boolval(preg_match_all('#^' . $pattern . '$#', $uri, $matches, PREG_OFFSET_CAPTURE));
     }
-
+    
+    /**
+     * handle
+     * Handles routes
+     * @param  mixed $routes Routes
+     * @param  mixed $quitAfterRun Quit after handling
+     * @return void
+     */
     private function handle($routes, $quitAfterRun = false)
     {
         $numberHandled = 0;
@@ -285,7 +301,14 @@ class Router
 
         return $numberHandled;
     }
-
+    
+    /**
+     * invoke
+     * Invokes a lambda function
+     * @param  mixed $function
+     * @param  mixed $params
+     * @return void
+     */
     private function invoke($function, $params = array())
     {
         if (is_callable($function)) {
@@ -319,7 +342,10 @@ class Router
 
     public function getCurrentUri()
     {
-        $uri = substr(rawurldecode($_SERVER['REQUEST_URI']), strlen($this->getBasePath()));
+        $uri = substr(
+            rawurldecode($_SERVER['REQUEST_URI']), 
+            strlen($this->getBasePath())
+        );
 
         if (strstr($uri, '?')) {
             $uri = substr($uri, 0, strpos($uri, '?'));
@@ -332,7 +358,12 @@ class Router
     public function getBasePath()
     {
         if ($this->serverBasePath === null) {
-            $this->serverBasePath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
+            $this->serverBasePath = implode(
+                '/', 
+                array_slice(
+                    explode('/', $_SERVER['SCRIPT_NAME']), 0, -1
+                )
+            ) . '/';
         }
 
         return $this->serverBasePath;
