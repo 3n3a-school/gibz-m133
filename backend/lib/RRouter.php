@@ -11,7 +11,7 @@ namespace M133;
  * PHP Router
  * Routes requests (middleware then routes)
  */
-class Router
+class RRouter
 {
     private $routes = array();
 
