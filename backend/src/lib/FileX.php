@@ -1,17 +1,25 @@
 <?php
 
+/**
+ * @author      Enea Krähenbühl <inquiry@3n3a.ch>
+ * @copyright   Copyright (c), 2022 Enea Krähenbühl
+ * @license     MIT public license
+ */
 namespace M133;
-
 
 /**
  * FileHandler
  * Wrapper for easy file handling
  */
 class FileX {
-    /* Path to current file */
+    /**
+     * @var string The path to the file which is to be worked on
+     */
     private $filename = '';
 
-    /* Current file handle */
+    /**
+     * @var Handle The active file handle
+     */
     private $current_file;
         
     /**

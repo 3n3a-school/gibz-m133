@@ -1,5 +1,6 @@
 ## Backend
 
+- [x] Create project structure
 - [ ] create PHP Server-Side Router
 - [ ] integrate Authentication into Router via PHP-Sessions
 	* variable is_authenticated in session

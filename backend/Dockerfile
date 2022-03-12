@@ -1,4 +1,5 @@
 FROM php:8.0-apache
+RUN a2enmod rewrite
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libicu-dev
 
