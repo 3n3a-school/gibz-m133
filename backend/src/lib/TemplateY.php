@@ -111,6 +111,7 @@ class TemplateY {
                     $data_arr[$key_name]
                 );
 
+                // render tags in subview
                 $matched_tags = $this->match($this->template_tag_re, $replacement);
                 $replacement = $this->render_tags($matched_tags, $data_arr, $replacement);
                 break;
