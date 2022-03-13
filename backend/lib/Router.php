@@ -175,24 +175,6 @@ class ExpressRouter
     }
     
     /**
-     * mount
-     * Mounts a given route, allows for separating routers
-     * @param  mixed $baseRoute
-     * @param  mixed $function
-     * @return void
-     */
-    public function mount($baseRoute, $function)
-    {
-        $currentBaseRoute = $this->baseRoute;
-
-        $this->baseRoute .= $baseRoute;
-
-        call_user_func($function);
-
-        $this->baseRoute = $currentBaseRoute;
-    }
-    
-    /**
      * start
      *
      * @param  mixed $callback
