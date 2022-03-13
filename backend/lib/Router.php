@@ -256,22 +256,13 @@ class ExpressRouter
 
               $matches = [];
 
-              $is_match = $this->patternMatches($route_pattern, $this->getCurrentUrl(), $matches, PREG_OFFSET_CAPTURE);
+              $is_match = $this->patternMatches($route_pattern, $this->getCurrentUrl(), $matches);
 
               if ($is_match) {
 
                 $matches = array_slice($matches, 1);
 
-                $params = array_map(function ($match, $index) use ($matches) {
-
-                  if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
-                    if ($matches[$index + 1][0][1] > -1) {
-                      return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
-                    }
-                  }
-
-                  return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
-                }, $matches, array_keys($matches));
+                $parameters = $this->getParamsFromMatches($matches);
 
                 $this->invoke($route_callable);
 
@@ -285,8 +276,17 @@ class ExpressRouter
             header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
         }
     }
-
-    private function patternMatches($pattern, $uri, &$matches, $flags)
+    
+    /**
+     * patternMatches
+     *
+     * @param  mixed $pattern
+     * @param  mixed $uri
+     * @param  ptrArray $matches Pointer to match-array
+     * @param  mixed $flags
+     * @return void
+     */
+    private function patternMatches($pattern, $uri, &$matches)
     {
       $pattern = preg_replace('/\/{(.*?)}/', '/(.*?)', $pattern);
 
@@ -308,25 +308,15 @@ class ExpressRouter
 
         foreach ($routes as $route) {
 
-            $is_match = $this->patternMatches($route['pattern'], $uri, $matches, PREG_OFFSET_CAPTURE);
+            $is_match = $this->patternMatches($route['pattern'], $uri, $matches);
 
             if ($is_match) {
 
                 $matches = array_slice($matches, 1);
 
-                $params = array_map(function ($match, $index) use ($matches) {
+                $parameters = $this->getParamsFromMatches($matches);
 
-                    // substr of current parameter, until next one
-                    if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
-                        if ($matches[$index + 1][0][1] > -1) {
-                            return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
-                        }
-                    }
-
-                    return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
-                }, $matches, array_keys($matches));
-
-                $this->invoke($route['function'], $params);
+                $this->invoke($route['function'], $parameters);
 
                 ++$numberHandled;
 
@@ -338,18 +328,34 @@ class ExpressRouter
 
         return $numberHandled;
     }
+
+    private function getParamsFromMatches($matches) {
+        $parameters = array_map(function ($match, $index) use ($matches) {
+
+            // substr of current parameter, until next one
+            if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
+                if ($matches[$index + 1][0][1] > -1) {
+                    return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
+                }
+            }
+
+            return isset($match[0][0]) && $match[0][1] != -1 ? trim($match[0][0], '/') : null;
+        }, $matches, array_keys($matches));
+
+        return $parameters;
+    }
     
     /**
      * invoke
      * Invokes a lambda function
      * @param  mixed $function
-     * @param  mixed $params
+     * @param  mixed $parameters Array of parametrs to anonymous func
      * @return void
      */
-    private function invoke($function, $params = array())
+    private function invoke($function, $parameters = array())
     {
         if (is_callable($function)) {
-            call_user_func_array($function, $params);
+            call_user_func_array($function, $parameters);
         }
     }
 
