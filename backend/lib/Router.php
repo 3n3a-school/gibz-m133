@@ -93,7 +93,7 @@ class ExpressRouter
 
     private $requestedMethod = '';
 
-    private $serverBasePath;
+    private $scriptPath;
     
     /**
      * match
@@ -193,12 +193,12 @@ class ExpressRouter
     }
     
     /**
-     * run
+     * start
      *
      * @param  mixed $callback
      * @return bool If more than 1 route was handled
      */
-    public function run($callback = null)
+    public function start($callback = null)
     {
         $this->requestedMethod = RouterHelper::getRequestMethod();
 
@@ -223,6 +223,7 @@ class ExpressRouter
             }
         }
 
+        // head should have no body
         if ( RouterHelper::isHead() ) {
             ob_end_clean();
         }
@@ -264,14 +265,14 @@ class ExpressRouter
 
                 $parameters = $this->getParamsFromMatches($matches);
 
-                $this->invoke($route_callable);
+                $this->callLambda($route_callable);
 
                 ++$numberHandled;
               }
             }
         }
         if (($numberHandled == 0) && (isset($this->notFoundCallback['/']))) {
-            $this->invoke($this->notFoundCallback['/']);
+            $this->callLambda($this->notFoundCallback['/']);
         } elseif ($numberHandled == 0) {
             header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
         }
@@ -316,7 +317,7 @@ class ExpressRouter
 
                 $parameters = $this->getParamsFromMatches($matches);
 
-                $this->invoke($route['function'], $parameters);
+                $this->callLambda($route['function'], $parameters);
 
                 ++$numberHandled;
 
@@ -328,7 +329,13 @@ class ExpressRouter
 
         return $numberHandled;
     }
-
+    
+    /**
+     * getParamsFromMatches
+     * Returns array of parameters for anon function
+     * @param  mixed $matches
+     * @return void
+     */
     private function getParamsFromMatches($matches) {
         $parameters = array_map(function ($match, $index) use ($matches) {
 
@@ -346,39 +353,49 @@ class ExpressRouter
     }
     
     /**
-     * invoke
+     * callLambda
      * Invokes a lambda function
      * @param  mixed $function
      * @param  mixed $parameters Array of parametrs to anonymous func
      * @return void
      */
-    private function invoke($function, $parameters = array())
+    private function callLambda($function, $parameters = array())
     {
         if (is_callable($function)) {
             call_user_func_array($function, $parameters);
         }
     }
 
-
+    
+    /**
+     * getCurrentUrl
+     * 
+     * @return string current url
+     */
     public function getCurrentUrl()
     {
-        $uri = substr(
+        $url = substr(
             rawurldecode($_SERVER['REQUEST_URI']), 
-            strlen($this->getBasePath())
+            strlen($this->getScriptPath())
         );
 
-        if (strstr($uri, '?')) {
-            $uri = substr($uri, 0, strpos($uri, '?'));
+        if (strstr($url, '?')) {
+            $url = substr($url, 0, strpos($url, '?'));
         }
 
-        return '/' . trim($uri, '/');
+        return '/' . trim($url, '/');
     }
 
-
-    public function getBasePath()
+    
+    /**
+     * getBasePath
+     * 
+     * @return string Path
+     */
+    public function getScriptPath()
     {
-        if ($this->serverBasePath === null) {
-            $this->serverBasePath = implode(
+        if ($this->scriptPath === null) {
+            $this->scriptPath = implode(
                 '/', 
                 array_slice(
                     explode('/', $_SERVER['SCRIPT_NAME']), 0, -1
@@ -386,6 +403,6 @@ class ExpressRouter
             ) . '/';
         }
 
-        return $this->serverBasePath;
+        return $this->scriptPath;
     }
 }

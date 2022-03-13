@@ -10,14 +10,14 @@ use M133\Template as Tpl;
 
 $views_base = __DIR__ . '/frontend/views/';
 
-$router = new Router();
+$r = new Router();
 $templ = new Tpl();
 
-$router->registerMiddleware(['GET'], '/.*', function () {
+$r->registerMiddleware(['GET'], '/.*', function () {
     header('X-Powered-By: eServer');
 });
 
-$router->get('/{path}', function($path) {
+$r->get('/{path}', function($path) {
     global $views_base, $templ;
 
     $title = "Ranglisten M133";
@@ -28,4 +28,4 @@ $router->get('/{path}', function($path) {
     ]);
 });
 
-$router->run();
+$r->start();
