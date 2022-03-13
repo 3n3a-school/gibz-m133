@@ -17,12 +17,12 @@ $router->registerMiddleware(['GET'], '/.*', function () {
     header('X-Powered-By: eServer');
 });
 
-$router->get('/.*', function() {
+$router->get('/{path}', function($path) {
     global $views_base, $templ;
 
     $title = "Ranglisten M133";
     $templ->render($views_base . 'index.html', [
-        'title' => 'Test',
+        'title' => $path ?? "TEst",
         'footer' => $views_base . 'footer.html',
         'address' => '123 street 4'
     ]);

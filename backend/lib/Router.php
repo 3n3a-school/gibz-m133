@@ -316,6 +316,7 @@ class ExpressRouter
 
                 $params = array_map(function ($match, $index) use ($matches) {
 
+                    // substr of current parameter, until next one
                     if (isset($matches[$index + 1]) && isset($matches[$index + 1][0]) && is_array($matches[$index + 1][0])) {
                         if ($matches[$index + 1][0][1] > -1) {
                             return trim(substr($match[0][0], 0, $matches[$index + 1][0][1] - $match[0][1]), '/');
