@@ -2,12 +2,13 @@
 
 namespace M133;
 
-require_once __DIR__ . '/lib/App.php';
-require_once __DIR__ . '/lib/Database.php';
-require_once __DIR__ . '/lib/Router.php';
-require_once __DIR__ . '/lib/Template.php';
+include_once __DIR__ . '/lib/App.php';
+include_once __DIR__ . '/lib/Database.php';
+include_once __DIR__ . '/lib/Router.php';
+include_once __DIR__ . '/lib/Template.php';
 
-require_once __DIR__ . '/controllers/index.php';
+include_once __DIR__ . '/lib/Controller.php';
+include_once __DIR__ . '/controllers/index.php';
 
 use M133\App as App;
 use M133\DatabaseConfig as DbConfig;
@@ -23,7 +24,6 @@ class RankingApp extends App {
         private Router $router,
         private Template $template,
         private Database $database,
-        private string $views_path = __DIR__ . '/frontend/views/'
     ) {
         $this->controllers['index'] = new IndexController($this->database);
 
@@ -31,16 +31,62 @@ class RankingApp extends App {
     }
 
     public function initRoutes() {
-        $this->router->registerMiddleware(['GET'], '/.*', function () {
+        $this->router->registerMiddleware(['GET', 'POST'], '/.*', function () {
             header('X-Powered-By: eServer');
+
+            // Authentication
+            session_start();
+            $_SESSION['is_authenticated'] = false;
+            $_SESSION['session_timeout'] = NULL;
+            $_SESSION['username'] = NULL;
         });
-        
-        $this->router->get('/{path}', function($path) {
-            $this->template->render($this->views_path . 'index.html', [
-                'title' => $this->controllers['index']->handleGet(),
-                'footer' => $this->views_path . 'footer.html',
-                'address' => '123 street 4'
-            ]);
+
+        $this->indexRoute();
+        $this->loginRoute();
+    }
+    
+    private function indexRoute() {
+        $this->router->get('/', function() {
+
+            if ($_SESSION['is_authenticated']) {
+
+                $this->template->render('index.html', [
+                    'title' => '',//$this->controllers['index']->handleGet(),
+                    'footer' => 'footer.html',
+                    'address' => '123 street 4'
+                ]);
+
+            } else {
+
+                $this->template->render(
+                    'login.html', [
+                        'auth' => $_SESSION['is_authenticated'] ? 'true' : 'false'
+                    ]
+                );
+
+            }
+        });
+    }
+
+    private function loginRoute() {
+        $this->router->post('/login', function() {
+
+            if ( !$_SESSION['is_authenticated'] &&
+                array_key_exists('username', $_POST) &&
+                array_key_exists('password', $_POST)
+            ) {
+
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+
+                if ( $username == "admin" && $password == "123" ) {
+                    $_SESSION['is_authenticated'] = true;
+                    $_SESSION['session_timeout'] = strtotime("+1 day");
+                }
+                
+            }
+
+            header("Location: /");
         });
     }
 
@@ -62,9 +108,10 @@ $db_config = new DbConfig(
 $db = new Database($db_config);
 
 // Instantiate new App with Router...
+$views_path = __DIR__ . '/frontend/views/';
 $app = new RankingApp(
     new Router(),
-    new Template(),
+    new Template($views_path),
     $db
 );
 

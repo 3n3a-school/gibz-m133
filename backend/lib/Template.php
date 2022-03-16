@@ -29,7 +29,9 @@ class Template {
      * @param  mixed $filename Path to the template file
      * @return void
      */
-    function __construct() {
+    function __construct(
+        private string $views_path
+    ) {
         $this->filehandler = new \M133\Filehandler();
     }
     
@@ -42,8 +44,8 @@ class Template {
      * @return void
      */
     public function render($filename, $data, $return_string=FALSE) {
-        $this->filepath = $filename;
-        $this->fileContents = $this->filehandler->read($filename);
+        $this->filepath = $this->views_path . $filename;
+        $this->fileContents = $this->filehandler->read($this->filepath);
 
         $tag_matches = $this->match($this->templateTagRegex, $this->fileContents);
         $this->fileContents = $this->renderTags($tag_matches, $data, $this->fileContents);
@@ -108,7 +110,7 @@ class Template {
             case 'r':
                 // require
                 $replacement = $this->filehandler->read(
-                    $data_arr[$key_name]
+                    $this->views_path . $data_arr[$key_name]
                 );
 
                 // render tags in subview
