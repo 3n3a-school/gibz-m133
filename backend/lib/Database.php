@@ -33,12 +33,18 @@ class Database {
             $servername = $this->DB_CONFIG->servername;
             $port = $this->DB_CONFIG->port;
             $dbname = $this->DB_CONFIG->dbname;
-            $username = $this->DB_CONFIG->username;
-            $password = $this->DB_CONFIG->password;
-            $this->conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname",$username,$password);
+            $this->conn = new PDO(
+                "mysql:host=$servername;port=$port;dbname=$dbname",
+                $this->DB_CONFIG->username,
+                $this->DB_CONFIG->password
+            );
             $this->conn -> setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $e){
             echo "Connection failed: " . $e -> getMessage();
         }
+    }
+
+    function __destruct() {
+        $this->conn = null;
     }
 }
