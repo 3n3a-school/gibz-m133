@@ -44,6 +44,34 @@ class Database {
         }
     }
 
+    /**
+     * Create a database object
+     */
+    private function createObject($sql) {
+        $this->conn->exec($sql);
+    }
+
+    /**
+     * Add a datarecord to a table
+     */
+    public function addData($sql, $values) {
+        $conn->prepare($sql)->execute($values);
+    }
+    
+    /**
+     * Delete a datarecord from table
+     */
+    public function delData($sql, $values) {
+        $conn->prepare($sql)->execute($values);
+    }
+
+    /**
+     * Returns data record(s) from a query
+     */
+    public function getData($sql) {
+        return $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function __destruct() {
         $this->conn = null;
     }
