@@ -8,26 +8,23 @@ require_once __DIR__ . '/lib/Router.php';
 require_once __DIR__ . '/lib/Template.php';
 
 require_once __DIR__ . '/controllers/index.php';
-require_once __DIR__ . '/controllers/IndexController.php';
 
 use M133\App as App;
+use M133\DatabaseConfig as DbConfig;
 use M133\Database as Database;
 use M133\ExpressRouter as Router;
-use M133\template as Template;
-use M133\IndexController as IndexController;
+use M133\Template as Template;
+use M133\Controllers\IndexController as IndexController;
 
 class RankingApp extends App {
-    private $router = NULL;
-    private $template = NULL;
     private $controllers = [];
-    private $database = NULL;
 
-    private $views_path = __DIR__ . '/frontend/views/';
-
-    function __construct() {
-        $this->router = new Router();
-        $this->template = new Template();
-        $this->database = new Database();
+    function __construct(
+        private Router $router,
+        private Template $template,
+        private Database $database,
+        private string $views_path = __DIR__ . '/frontend/views/'
+    ) {
         $this->controllers['index'] = new IndexController($this->database);
 
         $this->initRoutes();
@@ -52,5 +49,24 @@ class RankingApp extends App {
     }
 }
 
-$app = new RankingApp();
+// Create Database Config for Docker Container
+$db_config = new DbConfig(
+    $_ENV['DB_HOST'],
+    $_ENV['DB_PORT'],
+    $_ENV['DB_DB'],
+    $_ENV['DB_USER'],
+    $_ENV['DB_PASS'],
+);
+
+// Instantiate new Database Class with Config
+$db = new Database($db_config);
+
+// Instantiate new App with Router...
+$app = new RankingApp(
+    new Router(),
+    new Template(),
+    $db
+);
+
+// Start the App
 $app->start();

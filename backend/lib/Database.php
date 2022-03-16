@@ -3,30 +3,22 @@
 namespace M133;
 
 class DatabaseConfig {
-
-    public $servername;
-    public $port;
-    public $dbname;
-    public $username;
-    public $password;
-    
-    function __construct() {
-        $this->servername = $_ENV['DB_HOST'];
-        $this->port = $_ENV['DB_PORT'];
-        $this->dbname = $_ENV['DB_DB'];
-        $this->username = $_ENV['DB_USER'];
-        $this->password = $_ENV['DB_PASS'];
-    }
+    function __construct(
+        public $servername,
+        public $port,
+        public $dbname,
+        public $username,
+        public $password,
+    ) {}
 }
 
 class Database {
 
-    public $conn = NULL;
-    private $DB_CONFIG;
+    private $conn = NULL;
 
-    function __construct() {
-        $this->DB_CONFIG = new DatabaseConfig();
-    }
+    function __construct(
+        private DatabaseConfig $DB_CONFIG
+    ) {}
 
     private function initConnection() {
         try{

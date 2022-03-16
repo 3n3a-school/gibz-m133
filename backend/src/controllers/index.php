@@ -1,14 +1,9 @@
 <?php
 
-namespace M133;
+namespace M133\Controllers;
 
-abstract class Controller {
+require_once __DIR__ . '/../lib/Controller.php';
+require_once __DIR__ . '/indexController.php';
 
-    public $db = NULL;
-
-    function __construct($db) {
-        $this->db = $db;
-    }
-
-    abstract public function handleGet();
-}
+use M133\Controller as Controller;
+use M133\Controllers\IndexController as IndexController;
