@@ -2,9 +2,8 @@
 
 namespace M133;
 
-include_once __DIR__ . '/lib/index.php';
-include_once __DIR__ . '/controllers/index.php';
 include_once __DIR__ . '/config.php';
+include_once __DIR__ . '/controllers/index.php';
 
 use M133\App as App;
 use M133\Controllers\IndexController as IndexController;
