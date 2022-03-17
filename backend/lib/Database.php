@@ -2,6 +2,8 @@
 
 namespace M133;
 
+use \PDO;
+
 class DatabaseConfig {
     function __construct(
         public $servername,
@@ -18,7 +20,9 @@ class Database {
 
     function __construct(
         private DatabaseConfig $DB_CONFIG
-    ) {}
+    ) {
+        $this->initConnection();
+    }
 
     private function initConnection() {
         try{
@@ -44,7 +48,9 @@ class Database {
             $this->conn->exec($sql);
             error_log( ($name ? $name : "DbObject") . " created successfully");
         } catch(PDOException $e) {
-            error_log( $sql . " - " . $e->getMessage());
+            error_log( "PDOException: " . $sql . " - " . $e->getMessage());
+        } catch (Exception $e) {
+            error_log( "General Exception: " . $sql . " - " . $e->getMessage());
         }
     }
 

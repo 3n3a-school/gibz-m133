@@ -1,1 +1,329 @@
 [17-Mar-2022 10:09:48 UTC] [LOGIN]: admin
+[17-Mar-2022 15:04:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function M133\getSqlFile() in /var/www/html/install.php:36
+Stack trace:
+#0 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#1 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#2 {main}
+  thrown in /var/www/html/install.php on line 36
+[17-Mar-2022 15:04:53 UTC] PHP Warning:  Undefined variable $db in /var/www/html/install.php on line 37
+[17-Mar-2022 15:04:53 UTC] PHP Fatal error:  Uncaught Error: Call to a member function createObject() on null in /var/www/html/install.php:37
+Stack trace:
+#0 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#1 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#2 {main}
+  thrown in /var/www/html/install.php on line 37
+[17-Mar-2022 15:05:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function exec() on null in /var/www/html/lib/Database.php:44
+Stack trace:
+#0 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#1 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#2 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#3 {main}
+  thrown in /var/www/html/lib/Database.php on line 44
+[17-Mar-2022 15:07:09 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+)' at line 2 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:08:14 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:10:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:11:39 UTC] DbObject created successfully
+[17-Mar-2022 15:11:40 UTC] DbObject created successfully
+[17-Mar-2022 15:11:40 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES event(id),
+    key VARCHAR(50) NOT NULL,
+    value VARC' at line 3 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:15:22 UTC] DbObject created successfully
+[17-Mar-2022 15:15:22 UTC] DbObject created successfully
+[17-Mar-2022 15:15:22 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES event(id),
+    key VARCHAR(50) NOT NULL,
+    value VARC' at line 3 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:15:26 UTC] DbObject created successfully
+[17-Mar-2022 15:15:26 UTC] DbObject created successfully
+[17-Mar-2022 15:15:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES event(id),
+    key VARCHAR(50) NOT NULL,
+    value VARC' at line 3 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:18:13 UTC] DbObject created successfully
+[17-Mar-2022 15:18:13 UTC] DbObject created successfully
+[17-Mar-2022 15:18:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR(50) NOT NULL,
+    value VARCHAR(500) NOT NULL,
+    CONSTRAINT fk_event' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:19:26 UTC] DbObject created successfully
+[17-Mar-2022 15:19:26 UTC] DbObject created successfully
+[17-Mar-2022 15:19:26 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR(50) NOT NULL,
+    value VARCHAR(500) NOT NULL,
+    FOREIGN KEY (event_' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:45:52 UTC] DbObject created successfully
+[17-Mar-2022 15:45:52 UTC] DbObject created successfully
+[17-Mar-2022 15:45:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 1824 Failed to open the referenced table 'event' in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:47:17 UTC] DbObject created successfully
+[17-Mar-2022 15:47:17 UTC] DbObject created successfully
+[17-Mar-2022 15:47:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES club(id),
+    date TIMESTAMP NOT NULL,
+    place VARCHA' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:47:54 UTC] DbObject created successfully
+[17-Mar-2022 15:47:54 UTC] DbObject created successfully
+[17-Mar-2022 15:47:54 UTC] DbObject created successfully
+[17-Mar-2022 15:47:54 UTC] DbObject created successfully
+[17-Mar-2022 15:47:54 UTC] DbObject created successfully
+[17-Mar-2022 15:47:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES event(id),
+    category_id BIGINT NOT NULL FOREIGN KEY R' at line 3 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- needs catego...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- needs catego...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:48:53 UTC] DbObject created successfully
+[17-Mar-2022 15:48:53 UTC] DbObject created successfully
+[17-Mar-2022 15:48:53 UTC] DbObject created successfully
+[17-Mar-2022 15:48:53 UTC] DbObject created successfully
+[17-Mar-2022 15:48:53 UTC] DbObject created successfully
+[17-Mar-2022 15:48:53 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 10 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- needs catego...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- needs catego...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:11 UTC] DbObject created successfully
+[17-Mar-2022 15:49:12 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES event(id),
+    category_id BIGINT NOT NULL FOREIGN KEY R' at line 4 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:50:19 UTC] DbObject created successfully
+[17-Mar-2022 15:50:19 UTC] DbObject created successfully
+[17-Mar-2022 15:50:19 UTC] DbObject created successfully
+[17-Mar-2022 15:50:19 UTC] DbObject created successfully
+[17-Mar-2022 15:50:20 UTC] DbObject created successfully
+[17-Mar-2022 15:50:20 UTC] DbObject created successfully
+[17-Mar-2022 15:50:20 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rank int NOT NULL,
+    time BIGINT NOT NULL,
+    birthyear int NOT NULL,
+    ' at line 6 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] DbObject created successfully
+[17-Mar-2022 15:51:33 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES club(club_id),
+    username VARCHAR(100) NOT NULL UNIQUE' at line 8 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] DbObject created successfully
+[17-Mar-2022 15:51:58 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES club(club_id)
+)' at line 14 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] DbObject created successfully
+[17-Mar-2022 15:52:55 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES club(club_id)
+)' at line 14 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] DbObject created successfully
+[17-Mar-2022 15:52:56 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES club(club_id)
+)' at line 14 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:40 UTC] DbObject created successfully
+[17-Mar-2022 15:53:41 UTC] DbObject created successfully
+[17-Mar-2022 15:53:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES club(club_id)
+)' at line 14 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:53:43 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] DbObject created successfully
+[17-Mar-2022 15:53:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'REFERENCES club(club_id)
+)' at line 14 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- User Table\r\n...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- User Table\r\n...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] DbObject created successfully
+[17-Mar-2022 15:54:29 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES club(id),
+    ranking_id BIGINT NOT NULL FOREIGN KEY REF' at line 3 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('-- needs rankin...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('-- needs rankin...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:55:20 UTC] DbObject created successfully
+[17-Mar-2022 15:55:20 UTC] DbObject created successfully
+[17-Mar-2022 15:55:20 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] DbObject created successfully
+[17-Mar-2022 15:55:21 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FOREIGN KEY REFERENCES club(id),
+    role_id BIGINT NOT NULL FOREIGN KEY REFERE' at line 2 in /var/www/html/lib/Database.php:48
+Stack trace:
+#0 /var/www/html/lib/Database.php(48): PDO->exec('CREATE TABLE IF...')
+#1 /var/www/html/install.php(37): M133\Database->createObject('CREATE TABLE IF...')
+#2 /var/www/html/install.php(13): M133\TableCreator1000->createTables()
+#3 /var/www/html/install.php(51): M133\TableCreator1000->__construct(Object(M133\Database))
+#4 {main}
+  thrown in /var/www/html/lib/Database.php on line 48
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:47 UTC] DbObject created successfully
+[17-Mar-2022 15:55:48 UTC] DbObject created successfully

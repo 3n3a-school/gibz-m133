@@ -16,12 +16,14 @@ class TableCreator1000 {
 
     function createTables() {
 
+        echo "Starting the creation of Tables ⌛...";
+
         // order of array defines creation order
         $table_sql = [
             "role",
             "club",
-            "event_meta",
             "event",
+            "event_meta",
             "category",
             "event_category_meta",
             "ranking",
@@ -31,9 +33,11 @@ class TableCreator1000 {
         ];
 
         foreach ($table_sql as $sql_file) {
-            $sql = getSqlFile( "$sql_file.sql" );
-            $db->createObject($sql);
+            $sql = $this->getSqlFile( "$sql_file.sql" );
+            $this->db->createObject($sql);
         }
+
+        echo "Done creating Tables 😀";
     }
 
     function prefillTables() {}
@@ -41,3 +45,8 @@ class TableCreator1000 {
     function getSqlFile( $filename ) {
         return file_get_contents( $this->base_path . $filename);
     }
+}
+
+$table_creator = new TableCreator1000(
+    $config->db
+);

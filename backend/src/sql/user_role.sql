@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS user_role (
-    user_id BIGINT NOT NULL FOREIGN KEY REFERENCES club(id),
-    role_id BIGINT NOT NULL FOREIGN KEY REFERENCES role(id),
-    PRIMARY KEY(user_id, role_id)
+    user_id BIGINT,
+    role_id BIGINT,
+    PRIMARY KEY(user_id, role_id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (role_id) REFERENCES role(id)
 );
