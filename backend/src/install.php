@@ -18,6 +18,8 @@ class TableCreator1000 {
 
         // order of array defines creation order
         $table_sql = [
+            "role",
+            "club",
             "event_meta",
             "event",
             "category",
@@ -26,8 +28,6 @@ class TableCreator1000 {
             "user",
             "user_ranking",
             "user_role",
-            "club",
-            "role"
         ];
 
         foreach ($table_sql as $sql_file) {
