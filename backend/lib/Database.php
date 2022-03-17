@@ -39,8 +39,13 @@ class Database {
     /**
      * Create a database object
      */
-    private function createObject($sql) {
-        $this->conn->exec($sql);
+    public function createObject($sql) {
+        try {
+            $this->conn->exec($sql);
+            log("DBObject created successfully");
+        } catch(PDOException $e) {
+            echo $sql . " - " . $e->getMessage();
+        }
     }
 
     /**

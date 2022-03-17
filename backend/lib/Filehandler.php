@@ -166,6 +166,8 @@ class Filehandler {
     }
 
     function __destruct() {
-        fclose($this->current_file);
+        if ( ! empty($this->current_file) ) {
+            fclose($this->current_file);
+        }
     }
 }

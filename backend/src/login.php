@@ -21,14 +21,17 @@ class Page {
             $this->sendPage();
     }
 
+    function isNotAuthenticated() {
+        return ( 
+            ! isset($_SESSION['is_authenticated']) || 
+            $_SESSION['is_authenticated'] === false
+        ) &&
+        array_key_exists('username', $_POST) &&
+        array_key_exists('password', $_POST);
+    }
+
     function checkSession() {
-        if ( ( 
-                ! isset($_SESSION['is_authenticated']) || 
-                $_SESSION['is_authenticated'] === false
-            ) &&
-            array_key_exists('username', $_POST) &&
-            array_key_exists('password', $_POST)
-        ) {
+        if ( $this->isNotAuthenticated() ) {
         
             session_unset();
             session_destroy();
@@ -40,6 +43,8 @@ class Page {
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['is_authenticated'] = true;
             $_SESSION['session_timeout'] = strtotime("+1 day");
+
+            error_log("[LOGIN]: $username");
         
             header('Location: /');
             exit();

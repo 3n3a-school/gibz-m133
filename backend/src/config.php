@@ -13,8 +13,10 @@ class Config {
     function __construct(
         public Template $template,
         public Database $db
-    ) {}
-
+    ) {
+        ini_set("log_errors", 1);
+        ini_set("error_log", __DIR__ . "/log/errors.log");
+    }
 }
 
 $db_config = new DbConfig(

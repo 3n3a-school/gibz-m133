@@ -7,9 +7,6 @@ include_once __DIR__ . '/controllers/index.php';
 include_once __DIR__ . '/config.php';
 
 use M133\App as App;
-use M133\DatabaseConfig as DbConfig;
-use M133\Database as Database;
-use M133\Template as Template;
 use M133\Controllers\IndexController as IndexController;
 
 class RankingApp extends App {
@@ -34,11 +31,12 @@ class RankingApp extends App {
 
 
     public function sendPage() {
-        if (isset($_SESSION['is_authenticated']) &&
-            $_SESSION['is_authenticated'] === true) {
+        if ($this->isAuthenticated()) {
 
-            $this->template->render('index.html', [
+            $this->template->render('base.html', [
                 'title' => $this->controllers['index']->handleGet(),
+                'content' => 'index.html',
+                'head_scripts' => 'head_scripts.html',
                 'footer' => 'footer.html',
                 'address' => '123 street 4'
             ]);
@@ -48,6 +46,11 @@ class RankingApp extends App {
             header('Location: /login.php');
 
         }
+    }
+
+    function isAuthenticated() {
+        return isset($_SESSION['is_authenticated']) &&
+            $_SESSION['is_authenticated'] === true;
     }
 }
 
