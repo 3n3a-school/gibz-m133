@@ -29,3 +29,10 @@ Servers this should already be present in the `.htaccess` file.
 3. Now the application should automatically go to _install.php_ \
 and begin installing itself.
 4. Once done you should be up and running with the following admin creds: `admin:admin`
+
+## Developer Info
+
+### Known Bugs
+
+* Templating engine:
+    * Cannot have two template tags on one line

@@ -27,7 +27,8 @@ class Page {
             $_SESSION['is_authenticated'] === false
         ) &&
         array_key_exists('username', $_POST) &&
-        array_key_exists('password', $_POST);
+        array_key_exists('password', $_POST) &&
+        Validate::Alphanumeric($_POST['username']);
     }
 
     function checkSession() {
@@ -60,8 +61,13 @@ class Page {
 
     function sendPage() {
         $this->template->render(
-            'login.html', [
-                'auth' => $_SESSION['is_authenticated'] ? 'true' : 'false'
+            'base.html', [
+                'auth' => $_SESSION['is_authenticated'] ? 'true' : 'false',
+                'title' => 'Login',
+                'content' => 'login.html',
+                'head_scripts' => 'head_scripts.html',
+                'footer' => 'footer.html',
+                'address' => '123 street 4'
             ]
         );
     }
