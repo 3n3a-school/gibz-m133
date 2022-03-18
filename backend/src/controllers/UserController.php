@@ -33,4 +33,15 @@ class UserController extends \M133\Controller {
             return true;
         return false;
     }
+
+    public function validCreds( $username, $password ) {
+
+        $user_sql = "SELECT username, password FROM users WHERE username = ?";
+        $data = $this->db->queryData($user_sql, [$username], "Username " . $username)[0];
+
+        if ($data['username'] == $username && 
+        password_verify( $password, $data['password']))
+            return true;
+        return false;
+    }
 }

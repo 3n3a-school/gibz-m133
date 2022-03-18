@@ -4,7 +4,6 @@ namespace M133;
 
 session_start();
 
-include_once __DIR__ . '/lib/index.php';
 include_once __DIR__ . '/config.php';
 
 use M133\Template as Template;
@@ -14,6 +13,7 @@ class Page {
 
     function __construct(
         private Template $template,
+        private $config
     ) {
         $this->checkSession();
 
@@ -25,14 +25,20 @@ class Page {
         return ( 
             ! isset($_SESSION['is_authenticated']) || 
             $_SESSION['is_authenticated'] === false
-        ) &&
-        array_key_exists('username', $_POST) &&
+        );
+    }
+
+    function formKeysExist() {
+        return array_key_exists('username', $_POST) &&
         array_key_exists('password', $_POST) &&
         Validate::Alphanumeric($_POST['username']);
     }
 
     function checkSession() {
-        if ( $this->isNotAuthenticated() ) {
+        if ( $this->isNotAuthenticated() &&
+            $this->formKeysExist() &&
+            $this->config->controllers['user']->usernameTaken( $_POST['username'] )
+             ) {
         
             session_unset();
             session_destroy();
@@ -40,6 +46,10 @@ class Page {
             
             $username = $_POST['username'];
             $password = $_POST['password'];
+
+            if ( ! $this->config->controllers['user']->validCreds($username, $password) ) {
+                echo "Wrong user, password combination.";
+            }
             
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['is_authenticated'] = true;
@@ -73,5 +83,6 @@ class Page {
 }
 
 $page = new Page(
-    $config->template
+    $config->template,
+    $config
 );
