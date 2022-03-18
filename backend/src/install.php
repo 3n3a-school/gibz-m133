@@ -60,7 +60,12 @@ class TableCreator1000 {
         echo "Done creating Tables 😀";
     }
 
-    function prefillTables() {}
+    function prefillTables() {
+        $this->db->addData(
+            "INSERT INTO role (name) VALUES (?)",
+            [ "admin" ]
+        );
+    }
     
     function getSqlFile( $filename ) {
         return file_get_contents( $this->base_path . $filename);
