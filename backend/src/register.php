@@ -49,13 +49,35 @@ class Page {
     }
 
     function checkFormSubmission() {
-        if ( $this->arrayHasKeys($_POST, ["username", "password", "first_name", "last_name"]) ) {
-            // check for post vars and redirect to login
+        if ( 
+            $this->arrayHasKeys($_POST, [
+                "first_name", 
+                "last_name"
+                "email",
+                "username", 
+                "password",
+                "birthdate",
+            ]) &&
+            Validate::Alphanumeric($_POST['username']) &&
+            Validate::Alphanumeric($_POST['first_name']) &&
+            Validate::Alphanumeric($_POST['last_name']) &&
+            Validate::Email($_POST['email'])
+        ) {
                 
             $username = $_POST['username'];
-            $password = $_POST['password'];
+            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
             $first_name = $_POST['first_name'];
             $last_name = $_POST['last_name'];
+            $birthdate = strtotime($_POST['birthdate']);
+            $email = $_POST['email'];
+
+            // TODO: save to db
+            // if success in saving 
+            // do below
+
+            // sql
+            // "INSERT INTO users (first_name, last_name, birthdate, club_id, username, password, email, is_active, is_verified)
+            // VALUES (?, ?, FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?)"
     
             error_log("[REGISTER]: $username");
         
