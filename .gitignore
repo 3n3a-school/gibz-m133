@@ -1,2 +1,3 @@
 .setupdone
 *.log
+backend/src/log/*
