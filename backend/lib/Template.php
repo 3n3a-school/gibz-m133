@@ -19,6 +19,7 @@ class Template {
     private $filepath = "";
     private $filehandler = NULL;
     private $fileContents = "";
+    private $current_page;
 
     private $templateTagRegex = '/{{(.*)}}/m';
     private $actionDelimiter = ':';
@@ -33,8 +34,71 @@ class Template {
         private string $views_path
     ) {
         $this->filehandler = new \M133\Filehandler();
+        $this->current_page = $_SERVER["SCRIPT_NAME"];
+    }
+
+    public function renderIntoBase( $additional_tags, $menus ) {
+        [$mobile_personmenu, $desktop_personmenu] = $this->renderPersonMenu( $menus['person'] );
+
+        [$desktop_menu, $mobile_menu] = $this->renderMainMenu( $menus['main'] );
+
+        $tags = [
+            'head_scripts' => 'head_scripts.html',
+            'content' => 'base_app.html',
+            'footer' => 'footer.html',
+            'address' => '123 street 4',
+            'mobile_personmenu' => $mobile_personmenu,
+            'desktop_personmenu' => $desktop_personmenu,
+            'desktop_menu' => $desktop_menu,
+            'mobile_menu' => $mobile_menu,
+        ];
+
+        $tags = array_merge( $tags, $additional_tags );
+
+
+        $this->render('base.html', $tags);
     }
     
+    private function renderMainMenu( $menu_arr ) {
+        $desktop_menu = "";
+        $mobile_menu = "";
+
+        foreach ($menu_arr as $title => $url) {
+            if ( $this->isActivePage($url) ) {
+                $desktop_menu .= $this->renderMenuItem( $title, $url, 'components/desktop_menu_item_active.html');
+                $mobile_menu .= $this->renderMenuItem( $title, $url, 'components/mobile_menu_item_active.html');
+            } else {
+                $desktop_menu .= $this->renderMenuItem( $title, $url, 'components/desktop_menu_item.html');
+                $mobile_menu .= $this->renderMenuItem( $title, $url, 'components/mobile_menu_item.html');
+            }
+        }
+
+        return [$desktop_menu, $mobile_menu];
+    }
+
+    private function renderPersonMenu( $menu_arr ) {
+        $mobile_personmenu = "";
+        $desktop_personmenu = "";
+
+        foreach ($menu_arr as $title => $url) {
+            $mobile_personmenu .= $this->renderMenuItem( $title, $url, 'components/mobile_personmenu_item.html');
+            $desktop_personmenu .= $this->renderMenuItem( $title, $url, 'components/desktop_personmenu_item.html');
+        }
+
+        return [$mobile_personmenu, $desktop_personmenu];
+    }
+
+    private function isActivePage( $url ) {
+        return $url == $this->current_page;
+    }
+
+    private function renderMenuItem( $title, $url, $template ) {
+        return $this->render($template, [
+            'title' => $title,
+            'url' => $url
+        ], true);
+    }
+
     /**
      * render
      * Renders a template
