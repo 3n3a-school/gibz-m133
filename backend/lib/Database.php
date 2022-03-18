@@ -24,7 +24,7 @@ class Database {
         $this->initConnection();
     }
 
-    private function initConnection() {
+    public function initConnection() {
         try{
             $servername = $this->DB_CONFIG->servername;
             $port = $this->DB_CONFIG->port;
@@ -57,22 +57,29 @@ class Database {
     /**
      * Add a datarecord to a table
      */
-    public function addData($sql, $values) {
-        $conn->prepare($sql)->execute($values);
+    public function addData($sql, $values, $name = null) {
+        try {
+            $this->conn->prepare($sql)->execute($values);
+            error_log( ($name ? $name : "DbObject") . " added successfully");
+        } catch(PDOException $e) {
+            error_log( "PDOException: " . $sql . " - " . $e->getMessage());
+        } catch (Exception $e) {
+            error_log( "General Exception: " . $sql . " - " . $e->getMessage());
+        }
     }
     
     /**
      * Delete a datarecord from table
      */
     public function delData($sql, $values) {
-        $conn->prepare($sql)->execute($values);
+        $this->conn->prepare($sql)->execute($values);
     }
 
     /**
      * Returns data record(s) from a query
      */
     public function getData($sql) {
-        return $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
     function __destruct() {

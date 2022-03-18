@@ -36,7 +36,7 @@ class TableCreator1000 {
 
     function createTables() {
 
-        echo "Starting the creation of Tables ⌛...";
+        echo "Starting the creation of Tables ⌛...<br>";
 
         // order of array defines creation order
         $table_sql = [
@@ -57,16 +57,44 @@ class TableCreator1000 {
             $this->db->createObject($sql, $sql_file);
         }
 
-        echo "Done creating Tables 😀";
+        echo "Done creating Tables 😀<br>";
     }
 
     function prefillTables() {
-        $this->db->addData(
-            "INSERT INTO role (name) VALUES (?)",
-            [ "admin" ]
-        );
+
+        echo "Starting the filling in of some Tables 🥧...<br>";
+
+        $prefill_sql = [
+            "role" => [
+                "sql" => "INSERT INTO role (name) VALUES (?)",
+                "values" => [ ["admin"], ["user"], ["owner"] ]
+            ],
+            "user" => [
+                "sql" => "INSERT INTO users (first_name, last_name, birthdate, club_id, username, password, email, is_active, is_verified)
+                        VALUES (?, ?, FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?)",
+                "values" => [ 
+                    [ "Administrative", "User", strtotime("1. January 1999"), NULL, "admin", password_hash("admin", PASSWORD_ARGON2I), "admin@email.com", true, true ]
+                ]
+            ]
+        ];
+
+        foreach ($prefill_sql as $sql_file_name => $sql_file_value) {
+            // add prefill all values
+            foreach ($sql_file_value['values'] as $value) {
+                $this->db->addData(
+                    $sql_file_value['sql'],
+                    $value,
+                    $sql_file_name . "_prefill"
+                );
+            }
+        }
+
+        echo "Finished the filling up of tasty tabels 🤑<br>";
+
     }
     
+
+
     function getSqlFile( $filename ) {
         return file_get_contents( $this->base_path . $filename);
     }
