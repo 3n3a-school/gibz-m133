@@ -20,3 +20,12 @@ the following PHP-Extensions are present on your installation.
 Afterwards you should make sure, that all requests except for files
 are redirected to the `index.php` file in the _backend_ folder. For Apache
 Servers this should already be present in the `.htaccess` file.
+
+
+### Installation
+
+1. Once the application is up and running open your browser
+2. Go to the URL: `host:port/`
+3. Now the application should automatically go to _install.php_ \
+and begin installing itself.
+4. Once done you should be up and running with the following admin creds: `admin:admin`

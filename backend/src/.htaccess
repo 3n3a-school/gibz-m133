@@ -1,0 +1,7 @@
+<FilesMatch "^(config.php|.htaccess)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Disable directory browsing 
+Options -Indexes

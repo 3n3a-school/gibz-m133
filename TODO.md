@@ -3,11 +3,11 @@
 - [x] Create project structure
 - [x] Create Simple PHP Templating
 - [x] create PHP Server-Side Router
-- [ ] integrate Authentication into Router via PHP-Sessions
+- [x] integrate Authentication into Router via PHP-Sessions
 	* variable is_authenticated in session
-- [ ] create login.html page
+- [x] create login.html page
 	* which is served when not authenticated
-- [ ] create database controller
+- [x] create database controller
 	* globally accessible across all controllers
 	* automatic init of database -> sql table creation (install.php?)
 - [ ] create api endpoints (w controllers)
@@ -30,9 +30,5 @@
 
 ## Frontend
 
-- [ ] create in react
 - [ ] one for admins
 - [ ] one for users/organizers
-- [ ] use react-query to get info from backend
-- [ ] pack using webpack
-- [ ] serve via router in php
