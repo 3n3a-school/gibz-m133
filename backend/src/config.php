@@ -3,13 +3,17 @@
 namespace M133;
 
 include_once __DIR__ . '/lib/index.php';
+include_once __DIR__ . '/controllers/index.php';
 
 use M133\Filehandler as Filehandler;
 use M133\DatabaseConfig as DbConfig;
 use M133\Database as Database;
 use M133\Template as Template;
+use M133\Controllers\UserController as UserController;
 
 class Config {
+
+    private $controllers = [];
    
     function __construct(
         public Template $template,
@@ -17,6 +21,8 @@ class Config {
     ) {
         ini_set("log_errors", 1);
         ini_set("error_log", __DIR__ . "/log/errors.log");
+
+        $this->controllers['user'] = new UserController($this->db);
     }
 }
 

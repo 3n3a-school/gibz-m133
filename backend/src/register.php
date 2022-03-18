@@ -52,7 +52,7 @@ class Page {
         if ( 
             $this->arrayHasKeys($_POST, [
                 "first_name", 
-                "last_name"
+                "last_name",
                 "email",
                 "username", 
                 "password",
@@ -63,21 +63,17 @@ class Page {
             Validate::Alphanumeric($_POST['last_name']) &&
             Validate::Email($_POST['email'])
         ) {
+
+            $registration = [];
                 
-            $username = $_POST['username'];
-            $password = password_hash($_POST['password'], PASSWORD_ARGON2I);
-            $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
-            $birthdate = strtotime($_POST['birthdate']);
-            $email = $_POST['email'];
+            $registration['username'] = $_POST['username'];
+            $registration['password'] = password_hash($_POST['password'], PASSWORD_ARGON2I);
+            $registration['first_name'] = $_POST['first_name'];
+            $registration['last_name'] = $_POST['last_name'];
+            $registration['birthdate'] = strtotime($_POST['birthdate']);
+            $registration['email'] = $_POST['email'];
 
-            // TODO: save to db
-            // if success in saving 
-            // do below
-
-            // sql
-            // "INSERT INTO users (first_name, last_name, birthdate, club_id, username, password, email, is_active, is_verified)
-            // VALUES (?, ?, FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?)"
+            $config->controllers['user']->addUser( $registration );
     
             error_log("[REGISTER]: $username");
         

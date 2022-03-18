@@ -3,21 +3,16 @@
 namespace M133;
 
 include_once __DIR__ . '/config.php';
-include_once __DIR__ . '/controllers/index.php';
 
 use M133\App as App;
 use M133\Validate as Validate;
-use M133\Controllers\UserController as UserController;
 
 class RankingApp extends App {
-    private $controllers = [];
 
     function __construct(
         private Template $template,
         private Database $database,
     ) {
-        $this->controllers['user'] = new UserController($this->database);
-
         $this->checkInstalled();
         $this->initRoutes();
         $this->sendPage();
