@@ -17,8 +17,19 @@ class RankingApp extends App {
     ) {
         $this->controllers['index'] = new IndexController($this->database);
 
+        $this->checkInstalled();
         $this->initRoutes();
         $this->sendPage();
+    }
+
+    private function checkInstalled() {
+        if ( ! file_exists( __DIR__ . '/.setupdone' ) ) {
+            // Setup not done
+            // Start installation
+            header( 'Location: /install.php' );
+            exit();
+        }
+        error_log("Already installed");
     }
 
     public function initRoutes() {
