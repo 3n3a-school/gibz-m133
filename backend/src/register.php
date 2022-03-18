@@ -2,18 +2,17 @@
 
 namespace M133;
 
-session_start();
-
-include_once __DIR__ . '/lib/index.php';
 include_once __DIR__ . '/config.php';
-
 use M133\Template as Template;
+
+session_start();
 
 class Page {
     private $is_authenticated = false;
 
     function __construct(
         private Template $template,
+        private $config,
     ) {
         $this->checkSession();
 
@@ -73,9 +72,16 @@ class Page {
             $registration['birthdate'] = strtotime($_POST['birthdate']);
             $registration['email'] = $_POST['email'];
 
-            $config->controllers['user']->addUser( $registration );
+            if ( $this->config->controllers['user']->usernameTaken(
+                $registration['username']
+            ) ) {
+                echo "Username already taken";
+                exit();
+            }
+            
+            $this->config->controllers['user']->addUser( $registration );
     
-            error_log("[REGISTER]: $username");
+            error_log("[REGISTER]: " . $registration['username']);
         
             header('Location: /login.php');
             exit();
@@ -97,5 +103,6 @@ class Page {
 }
 
 $page = new Page(
-    $config->template
+    $config->template,
+    $config
 );

@@ -13,7 +13,7 @@ use M133\Controllers\UserController as UserController;
 
 class Config {
 
-    private $controllers = [];
+    public $controllers = [];
    
     function __construct(
         public Template $template,

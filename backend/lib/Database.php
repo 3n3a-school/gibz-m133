@@ -57,29 +57,26 @@ class Database {
     /**
      * Add a datarecord to a table
      */
-    public function addData($sql, $values, $name = null) {
+    public function changeData($sql, $values, $name = null) {
         try {
             $this->conn->prepare($sql)->execute($values);
-            error_log( ($name ? $name : "DbObject") . " added successfully");
+            error_log( ($name ? $name : "DbObject") . " changed successfully");
         } catch(PDOException $e) {
             error_log( "PDOException: " . $sql . " - " . $e->getMessage());
         } catch (Exception $e) {
             error_log( "General Exception: " . $sql . " - " . $e->getMessage());
         }
     }
-    
-    /**
-     * Delete a datarecord from table
-     */
-    public function delData($sql, $values) {
-        $this->conn->prepare($sql)->execute($values);
-    }
 
-    /**
-     * Returns data record(s) from a query
-     */
-    public function getData($sql) {
-        return $this->conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    public function queryData($sql, $values, $name = null) {
+        try {
+            error_log( ($name ? $name : "DbObject") . " queried successfully");
+            return $this->conn->prepare($sql)->execute($values)->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log( "PDOException: " . $sql . " - " . $e->getMessage());
+        } catch (Exception $e) {
+            error_log( "General Exception: " . $sql . " - " . $e->getMessage());
+        }
     }
 
     function __destruct() {
