@@ -70,8 +70,11 @@ class Database {
 
     public function queryData($sql, $values, $name = null) {
         try {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute($values);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             error_log( ($name ? $name : "DbObject") . " queried successfully");
-            return $this->conn->prepare($sql)->execute($values)->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
         } catch(PDOException $e) {
             error_log( "PDOException: " . $sql . " - " . $e->getMessage());
         } catch (Exception $e) {

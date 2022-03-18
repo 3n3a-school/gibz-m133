@@ -27,6 +27,10 @@ class UserController extends \M133\Controller {
 
         $existance_sql = "SELECT username FROM users WHERE username = ?";
 
-        $this->db->queryData($existance_sql, [$username], "Username " . $username);
+        $data = $this->db->queryData($existance_sql, [$username], "Username " . $username)[0];
+
+        if ($data['username'] == $username)
+            return true;
+        return false;
     }
 }
