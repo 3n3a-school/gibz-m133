@@ -7,7 +7,7 @@ include_once __DIR__ . '/controllers/index.php';
 
 use M133\App as App;
 use M133\Validate as Validate;
-use M133\Controllers\IndexController as IndexController;
+use M133\Controllers\UserController as UserController;
 
 class RankingApp extends App {
     private $controllers = [];
@@ -16,7 +16,7 @@ class RankingApp extends App {
         private Template $template,
         private Database $database,
     ) {
-        $this->controllers['index'] = new IndexController($this->database);
+        $this->controllers['user'] = new UserController($this->database);
 
         $this->checkInstalled();
         $this->initRoutes();
@@ -52,14 +52,14 @@ class RankingApp extends App {
                 'person' => [
                     "Profile" => "",
                     "Settings" => "",
-                    "Logout" => ""
+                    "Logout" => "/logout.php"
                 ]
             ];
             
             // TODO: put in template class
             $this->template->renderIntoBase(
                 [
-                    'title' => $this->controllers['index']->handleGet(),
+                    'title' => 'Overview',
                     'app_content' => 'index.html',
                     'user_fullname' => 'Enea',
                     'user_email' => 'email@email.com',

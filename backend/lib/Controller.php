@@ -7,6 +7,4 @@ abstract class Controller {
         public Database $db,
     ) {
     }
-
-    abstract public function handleGet();
 }

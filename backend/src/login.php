@@ -67,7 +67,6 @@ class Page {
                 'content' => 'login.html',
                 'head_scripts' => 'head_scripts.html',
                 'footer' => 'footer.html',
-                'address' => '123 street 4'
             ]
         );
     }
