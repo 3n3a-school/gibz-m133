@@ -1,13 +1,13 @@
 id,participant_name,event_id,category_id,position,time,birthyear,city,club
-NULL,Andreas Rüedlinger,,,1,41:30:00,85,Winterthur,OLK Rafzerfeld
-NULL,Raphael Schalbetter,,,2,44:33:00,93,Luzern,OLG Nidwalden+Obwalden
-NULL,Benjamin Walti,,,3,48:15:00,97,Hendschiken,OLK Argus
-NULL,Joël Morgenthaler,,,4,48:52:00,94,Wangen b. Olten,OLG Herzogenbuchsee
-NULL,Jérémie Wichoud,,,5,53:56:00,1,Epalinges,CO Lausanne-Jorat
-NULL,Tobias Mächler,,,6,58:49:00,1,Wilen,OLG Galgenen
-NULL,Joel Habermacher,,,7,59:50:00,2,Seengen,OLK Argus
-NULL,Christian Stricker,,,8,01:00:19,67,Oberaach,OL Amriswil
-NULL,Matej Kala,,,9,01:04:53,89,Stein AG,OLV Baselland
-NULL,Ciro Martin,,,10,01:04:59,95,Büren,OLG Nidwalden+Obwalden
-NULL,Christian Lukasczyk,,,11,01:16:31,63,Zürich,OLG Zürich
-NULL,Vladimir Trebicky,,,,Po.f.,84,Zürich,OLG Zürich
+NULL,Andreas Rüedlinger,1,1,1,41:30:00,85,Winterthur,OLK Rafzerfeld
+NULL,Raphael Schalbetter,1,2,2,44:33:00,93,Luzern,OLG Nidwalden+Obwalden
+NULL,Benjamin Walti,1,3,3,48:15:00,97,Hendschiken,OLK Argus
+NULL,Joël Morgenthaler,1,4,4,48:52:00,94,Wangen b. Olten,OLG Herzogenbuchsee
+NULL,Jérémie Wichoud,1,5,5,53:56:00,1,Epalinges,CO Lausanne-Jorat
+NULL,Tobias Mächler,1,6,6,58:49:00,1,Wilen,OLG Galgenen
+NULL,Joel Habermacher,1,7,7,59:50:00,2,Seengen,OLK Argus
+NULL,Christian Stricker,1,8,8,01:00:19,67,Oberaach,OL Amriswil
+NULL,Matej Kala,1,9,9,01:04:53,89,Stein AG,OLV Baselland
+NULL,Ciro Martin,1,10,10,01:04:59,95,Büren,OLG Nidwalden+Obwalden
+NULL,Christian Lukasczyk,1,11,11,01:16:31,63,Zürich,OLG Zürich
+NULL,Vladimir Trebicky,1,12,,Po.f.,84,Zürich,OLG Zürich
