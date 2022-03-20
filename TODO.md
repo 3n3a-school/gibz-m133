@@ -30,5 +30,6 @@
 
 ## Frontend
 
-- [ ] one for admins
-- [ ] one for users/organizers
+- [x] one for users/organizers
+- [ ] add ranking tables
+- [ ] add events table
