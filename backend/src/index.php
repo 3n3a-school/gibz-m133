@@ -46,7 +46,7 @@ class RankingApp extends App {
                     "Wettkämpfe" => ""
                 ],
                 'person' => [
-                    "Profile" => "",
+                    "Profile" => "#show-user-modal",
                     "Settings" => "",
                     "Logout" => "/logout.php"
                 ]
@@ -58,8 +58,9 @@ class RankingApp extends App {
                 [
                     'title' => 'Overview',
                     'app_content' => 'index.html',
-                    'user_fullname' => $username ?? "User",
-                    'user_email' => $email,
+                    'username' => $username ?? "User",
+                    'full_name' => $username ?? "User",
+                    'email' => $email,
                 ],
                 $menus
             );

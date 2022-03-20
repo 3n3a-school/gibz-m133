@@ -42,6 +42,17 @@ class Template {
 
         [$desktop_menu, $mobile_menu] = $this->renderMainMenu( $menus['main'] );
 
+        $user_modal = $this->render( 'components/modal.html',[
+            'id' => 'profile-modal',
+            'modal_title' => 'Profile',
+            'modal_body' => 'components/modal_body_user.html',
+            'modal_ok_btn' => 'Close',
+            'modal_no_btn' => 'Cancel',
+            'username' => $additional_tags['username'],
+            'full_name' => $additional_tags['full_name'],
+            'email' => $additional_tags['email']
+        ], true);
+
         $tags = [
             'head_scripts' => 'head_scripts.html',
             'content' => 'base_app.html',
@@ -51,6 +62,7 @@ class Template {
             'desktop_personmenu' => $desktop_personmenu,
             'desktop_menu' => $desktop_menu,
             'mobile_menu' => $mobile_menu,
+            'user_modal' => $user_modal
         ];
 
         $tags = array_merge( $tags, $additional_tags );
