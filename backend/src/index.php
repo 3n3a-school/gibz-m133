@@ -12,6 +12,7 @@ class RankingApp extends App {
     function __construct(
         private Template $template,
         private Database $database,
+        private $config
     ) {
         $this->checkInstalled();
         $this->initRoutes();
@@ -51,13 +52,14 @@ class RankingApp extends App {
                 ]
             ];
             
-            // TODO: put in template class
+            $username = $this->getSessionValueIfExists('username');
+            $email = $this->config->controllers['user']->getUser( $username, ["email"] )['email'];
             $this->template->renderIntoBase(
                 [
                     'title' => 'Overview',
                     'app_content' => 'index.html',
-                    'user_fullname' => 'Enea',
-                    'user_email' => 'email@email.com',
+                    'user_fullname' => $username ?? "User",
+                    'user_email' => $email,
                 ],
                 $menus
             );
@@ -67,6 +69,13 @@ class RankingApp extends App {
             header('Location: /login.php');
 
         }
+    }
+
+    function getSessionValueIfExists( $key ) {
+        if (isset($_SESSION[$key])) {
+            return $_SESSION[$key];
+        }
+        return false;
     }
 
     function isAuthenticated() {
@@ -80,5 +89,6 @@ class RankingApp extends App {
 // Instantiate new App with Router...
 $app = new RankingApp(
     $config->template,
-    $config->db
+    $config->db,
+    $config
 );

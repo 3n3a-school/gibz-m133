@@ -3,8 +3,17 @@
 namespace M133\Controllers;
 
 class UserController extends \M133\Controller {
-    public function getUser( $user_id ) {
-        return 0;
+    public function getUser( $username, $fields=["username", "first_name", "last_name"] ) {
+
+        $user_fields = implode( ", ", $fields);
+        $user_sql = "SELECT $user_fields FROM users WHERE username = ?";
+
+        $query_data = $this->db->queryData($user_sql, [ $username ], "Username " . $username);
+        $data = ! empty ($query_data) ? $query_data[0] : NULL;
+
+        if ( ! empty($data) )
+            return $data;
+        return NULL;
     }
 
     public function addUser( $userinfo ) {
