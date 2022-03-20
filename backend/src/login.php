@@ -49,6 +49,7 @@ class Page {
 
             if ( ! $this->config->controllers['user']->validCreds($username, $password) ) {
                 echo "Wrong user, password combination.";
+                exit();
             }
             
             $_SESSION['username'] = $_POST['username'];

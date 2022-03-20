@@ -29,7 +29,8 @@ class UserController extends \M133\Controller {
 
         $data = $this->db->queryData($existance_sql, [$username], "Username " . $username)[0];
 
-        if ($data['username'] == $username)
+        if ( ! empty($data) &&
+            $data['username'] == $username)
             return true;
         return false;
     }
