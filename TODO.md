@@ -27,6 +27,8 @@
 		* /import
 		* create event
 		* update event
+- [ ] Prefill clubs & categories
+- [ ] add example data into ranking
 
 ## Frontend
 

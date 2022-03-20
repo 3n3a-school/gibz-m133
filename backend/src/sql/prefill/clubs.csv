@@ -1,0 +1,574 @@
+id,name,city
+NULL,"5402 SCAPA Nancy",NULL
+NULL,"A-TO-MY",NULL
+NULL,"ADOC",NULL
+NULL,"ANCO",NULL
+NULL,"ASCO Lugano",NULL
+NULL,"ASOPE Erstein",NULL
+NULL,"AV Willisau",NULL
+NULL,"Aas-UMB Orientering",NULL
+NULL,"Alta O-lag",NULL
+NULL,"BALISE Besançon",NULL
+NULL,"BC Effretikon",NULL
+NULL,"Belgien Nat. Mannschaft",NULL
+NULL,"Berliner TSC",NULL
+NULL,"Berliner Turnerschaft",NULL
+NULL,"Bike-O Bern",NULL
+NULL,"Bike-O Nordwestschweiz",NULL
+NULL,"Biovision Stiftung",NULL
+NULL,"Bogla OK",NULL
+NULL,"Brandvan OK",NULL
+NULL,"Buchegg. OL/OLG Thun",NULL
+NULL,"Bucheggb. OLG Biberist SO",NULL
+NULL,"Bucheggberger OL",NULL
+NULL,"Buchsee OL",NULL
+NULL,"C.O. Aget Lugano",NULL
+NULL,"C.O. Liege",NULL
+NULL,"C.O. Mulhouse",NULL
+NULL,"C.S. Forestale",NULL
+NULL,"CA Rosé",NULL
+NULL,"CA Rosé / OLG Bern",NULL
+NULL,"CARE Vevey",NULL
+NULL,"CDD",NULL
+NULL,"CET-Club",NULL
+NULL,"CO Ambérieu",NULL
+NULL,"CO CERN",NULL
+NULL,"CO Caballeros",NULL
+NULL,"CO Calirou",NULL
+NULL,"CO Chenau",NULL
+NULL,"CO Chenau / Calirou",NULL
+NULL,"CO Colmar",NULL
+NULL,"CO Engiadina",NULL
+NULL,"CO Engiadina/OLG Chur",NULL
+NULL,"CO Lausanne-Jorat",NULL
+NULL,"CO Lausanne-Jorat / ASCO Lugano",NULL
+NULL,"CO UTOE Bellinzona",NULL
+NULL,"COBF",NULL
+NULL,"COC Clube Orientação do Centro",NULL
+NULL,"CS EIS FONTAINEBLEAU",NULL
+NULL,"CUS Bologna",NULL
+NULL,"Carolina Orienteering Klubb",NULL
+NULL,"DARC",NULL
+NULL,"DARC Pfullendorf",NULL
+NULL,"DJK Adler 07 Bottrop",NULL
+NULL,"DTV Busswil",NULL
+NULL,"EBC Winterthur",NULL
+NULL,"ELKS",NULL
+NULL,"EMOL",NULL
+NULL,"ETH Zürich",NULL
+NULL,"EU-RO Frastanz",NULL
+NULL,"EUOC",NULL
+NULL,"Elch OK",NULL
+NULL,"Equipe de France junior",NULL
+NULL,"Erebus Vicenza",NULL
+NULL,"Espoon Suunta",NULL
+NULL,"FC Schüpfen",NULL
+NULL,"Fiamme Gialle",NULL
+NULL,"Finland",NULL
+NULL,"Forsa OK /Schweden",NULL
+NULL,"Friends of Nature Austria",NULL
+NULL,"GAOC Georgia Orienteering Club",NULL
+NULL,"GCO Gruyère",NULL
+NULL,"GOLD Savosa",NULL
+NULL,"GOV",NULL
+NULL,"GSC Aarau",NULL
+NULL,"GSC Bern",NULL
+NULL,"GSV Luzern",NULL
+NULL,"Gielehuette",NULL
+NULL,"Glarner OLG",NULL
+NULL,"Goldau/Zimmerberg",NULL
+NULL,"Gular IL",NULL
+NULL,"Gundelfinger TS",NULL
+NULL,"Göteborg Majorna OK",NULL
+NULL,"HSE Budapest",NULL
+NULL,"Hansa Simmerath",NULL
+NULL,"Happy Herts",NULL
+NULL,"Hautes Vosges Orientation",NULL
+NULL,"Hawkes Bay Orienteering Club",NULL
+NULL,"Helsingin Suunnistajat",NULL
+NULL,"Hjobygdens OK",NULL
+NULL,"Hombres de Maiz",NULL
+NULL,"Hyvinkään Rasti",NULL
+NULL,"IF Rigor",NULL
+NULL,"IF THOR",NULL
+NULL,"IFK Göteborg",NULL
+NULL,"IG Uitikon",NULL
+NULL,"IHW Alex Berlin",NULL
+NULL,"IK Hakarpspojkarna",NULL
+NULL,"IL Tyrving",NULL
+NULL,"Independent-O",NULL
+NULL,"Interlopers OC",NULL
+NULL,"Istanbul OK",NULL
+NULL,"KOVZ",NULL
+NULL,"KTV Altdorf",NULL
+NULL,"KTV Bütschwil",NULL
+NULL,"KTV Wil",NULL
+NULL,"Kalevan Rasti",NULL
+NULL,"Kanu-Club Schaffhausen",NULL
+NULL,"Kaulsdorfer OLV Berlin",NULL
+NULL,"Kolbotn OK",NULL
+NULL,"Kongsberg OL",NULL
+NULL,"Kraftwerk",NULL
+NULL,"LAC TV Unterstrass",NULL
+NULL,"LAV Glarus",NULL
+NULL,"LC Meilen",NULL
+NULL,"LC Rapperswil-Jona",NULL
+NULL,"LC Regensdorf",NULL
+NULL,"LC Uster",NULL
+NULL,"LCZ",NULL
+NULL,"LG Benken",NULL
+NULL,"LG Teufen",NULL
+NULL,"LSC Wil",NULL
+NULL,"LSF Pronoking Team",NULL
+NULL,"LSG Olten",NULL
+NULL,"LSV Biel",NULL
+NULL,"LSV Frauenfeld",NULL
+NULL,"LV Langenthal",NULL
+NULL,"LV Winterthur / LA Elgg",NULL
+NULL,"LVZO",NULL
+NULL,"Larvik OK",NULL
+NULL,"Lauf-Träff Arosa",NULL
+NULL,"Laufszene Sachsen",NULL
+NULL,"LeO-Team",NULL
+NULL,"Leksands OK",NULL
+NULL,"Linköpings OK",NULL
+NULL,"Lombardia Orienteering",NULL
+NULL,"Ludvika OK",NULL
+NULL,"Lynx",NULL
+NULL,"Lübecker TS",NULL
+NULL,"MR Dornach",NULL
+NULL,"MTK Bad Harzburg",NULL
+NULL,"MV Hüttlingen-Mettendorf",NULL
+NULL,"Melbourne Forest Racers (AUS)",NULL
+NULL,"NF Wien/Swiss",NULL
+NULL,"NTNUI",NULL
+NULL,"NWK Aargau",NULL
+NULL,"NWK Bern/Solothurn",NULL
+NULL,"NWK Fribourg/Neuchâtel",NULL
+NULL,"NWK Graubünden/Glarus",NULL
+NULL,"NWK Nordostschweiz",NULL
+NULL,"NWK Nordwestschweiz",NULL
+NULL,"NWK Zürich/Schaffhausen+",NULL
+NULL,"Naturfreunde Kitzbühel",NULL
+NULL,"Naturfreunde Wien",NULL
+NULL,"Nemiga-Nord",NULL
+NULL,"O Jura",NULL
+NULL,"O-92 Piano di Magadino",NULL
+NULL,"O-92/OLG Säuliamt",NULL
+NULL,"O-Motion",NULL
+NULL,"O-Motion/OL Zimmerberg",NULL
+NULL,"O-Motion/OLG Stäfa",NULL
+NULL,"OJE Wappler",NULL
+NULL,"OK DEVYNI",NULL
+NULL,"OK Jilemnice",NULL
+NULL,"OK Krakow",NULL
+NULL,"OK Linné",NULL
+NULL,"OK Tisaren ",NULL
+NULL,"OL Amriswil",NULL
+NULL,"OL Amriswil / OLG Basel",NULL
+NULL,"OL Diessenhofen",NULL
+NULL,"OL Domino",NULL
+NULL,"OL Filder",NULL
+NULL,"OL GA",NULL
+NULL,"OL Gaula",NULL
+NULL,"OL Hornbach",NULL
+NULL,"OL Montalin",NULL
+NULL,"OL Regio Burgdorf",NULL
+NULL,"OL Regio Burgdorf/OLG Huttwil",NULL
+NULL,"OL Regio Burgdorf/OLG Säuliamt",NULL
+NULL,"OL Regio Burgdorf/OLV Langenthal",NULL
+NULL,"OL Regio Burgdorf/ol norska",NULL
+NULL,"OL Regio Olten",NULL
+NULL,"OL Regio Olten / OLG Thun",NULL
+NULL,"OL Regio Olten/UBOL",NULL
+NULL,"OL Regio Wil",NULL
+NULL,"OL Regio Wil / thurgorienta",NULL
+NULL,"OL Regio Wil/UBOL",NULL
+NULL,"OL Trollelg",NULL
+NULL,"OL Tønsberg",NULL
+NULL,"OL Zimmerberg",NULL
+NULL,"OL Zimmerberg / OL Regio Burgdorf",NULL
+NULL,"OL Zimmerberg / TG Hütten",NULL
+NULL,"OL Zimmerberg/OLG Goldau",NULL
+NULL,"OL Zimmerberg/OLG Zürich",NULL
+NULL,"OL Zimmerberg/Pfäffikon",NULL
+NULL,"OL-Team Filder",NULL
+NULL,"OLA TSV Deggendorf",NULL
+NULL,"OLC Binningen",NULL
+NULL,"OLC Chiba / Japan",NULL
+NULL,"OLC Graz",NULL
+NULL,"OLC Kapreolo",NULL
+NULL,"OLC Kapreolo / OLG Chur",NULL
+NULL,"OLC Kapreolo / OLK Rafzerfeld",NULL
+NULL,"OLC Kapreolo BT",NULL
+NULL,"OLC Kapreolo/Galgenen",NULL
+NULL,"OLC Kapreolo/OLV Zug",NULL
+NULL,"OLC Omström / OLG Thun",NULL
+NULL,"OLC Omström Sense",NULL
+NULL,"OLC SKOG Fribourg",NULL
+NULL,"OLC Wienerwald, Österreich",NULL
+NULL,"OLC Winterthur",NULL
+NULL,"OLF Mainz",NULL
+NULL,"OLG ARDOC St.Vith",NULL
+NULL,"OLG AV Willisau",NULL
+NULL,"OLG Basel",NULL
+NULL,"OLG Basel / UBOL",NULL
+NULL,"OLG Basel/Bucheggb. OL",NULL
+NULL,"OLG Basel/OLV Baselland",NULL
+NULL,"OLG Bern",NULL
+NULL,"OLG Bern / OLV Baselland",NULL
+NULL,"OLG Bern / OLV Zug",NULL
+NULL,"OLG Bern / UBOL",NULL
+NULL,"OLG Bern / ol norska",NULL
+NULL,"OLG Bern / ol.biel.seeland",NULL
+NULL,"OLG Bern/GOV",NULL
+NULL,"OLG Bern/Matthäus O Team",NULL
+NULL,"OLG Bern/OLG Murten",NULL
+NULL,"OLG Bern/OLG Thun",NULL
+NULL,"OLG Biberist SO",NULL
+NULL,"OLG Biberist SO/OLG Thun",NULL
+NULL,"OLG Biberist SO/ol norska",NULL
+NULL,"OLG Büttikon 76",NULL
+NULL,"OLG Chies",NULL
+NULL,"OLG Chur",NULL
+NULL,"OLG Chur/OL Zimmerberg",NULL
+NULL,"OLG Chur/OLG Pfäffikon",NULL
+NULL,"OLG Chur/OLG Weisslingen",NULL
+NULL,"OLG Chur/Rymenzburg",NULL
+NULL,"OLG Cordoba",NULL
+NULL,"OLG Cordoba / CO Engiadina",NULL
+NULL,"OLG Cordoba / OLK Piz Hasi",NULL
+NULL,"OLG Cordoba/ OLG Basel",NULL
+NULL,"OLG Cordoba/TVD",NULL
+NULL,"OLG Dachsen",NULL
+NULL,"OLG Davos",NULL
+NULL,"OLG Davos/Chur",NULL
+NULL,"OLG Flims",NULL
+NULL,"OLG Füchsli",NULL
+NULL,"OLG Galgenen",NULL
+NULL,"OLG Galgenen/Goldau",NULL
+NULL,"OLG Galgenen/Kapreolo",NULL
+NULL,"OLG Galgenen/OL Regio Olten",NULL
+NULL,"OLG Galgenen/OLC Winterthur",NULL
+NULL,"OLG Galgenen/OLK Argus",NULL
+NULL,"OLG Gallispitz",NULL
+NULL,"OLG Goldau",NULL
+NULL,"OLG Goldau / OLG Basel",NULL
+NULL,"OLG Goldau / UBOL",NULL
+NULL,"OLG Goldau/CO Engiadina",NULL
+NULL,"OLG Goldau/Säuliamt",NULL
+NULL,"OLG Gysenstein",NULL
+NULL,"OLG Herzogenbuchsee",NULL
+NULL,"OLG Herzogenbuchsee / ol.biel.",NULL
+NULL,"OLG Herzogenbuchsee/OSC Kassel",NULL
+NULL,"OLG Hondrich",NULL
+NULL,"OLG Huttwil",NULL
+NULL,"OLG Huttwil / ANCO",NULL
+NULL,"OLG Huttwil/OL Regio Burgdorf",NULL
+NULL,"OLG Huttwil/OLG Säuliamt",NULL
+NULL,"OLG Huttwil/OLK Wiggertal",NULL
+NULL,"OLG Huttwil/UBOL",NULL
+NULL,"OLG Ilves Lupu",NULL
+NULL,"OLG KTV Altdorf",NULL
+NULL,"OLG KTV Altdorf / OLG Goldau",NULL
+NULL,"OLG Kakowa",NULL
+NULL,"OLG Kreuzlingen",NULL
+NULL,"OLG Kölliken",NULL
+NULL,"OLG Kölliken / OLK Rafzerfeld",NULL
+NULL,"OLG Laufental-Thierstein",NULL
+NULL,"OLG Max und Moritz",NULL
+NULL,"OLG Murten",NULL
+NULL,"OLG Nexis-Fibers",NULL
+NULL,"OLG Nidwalden+Obwalden",NULL
+NULL,"OLG OASIS",NULL
+NULL,"OLG Oberwil",NULL
+NULL,"OLG Oberwil/OLK Argus",NULL
+NULL,"OLG Ortenau",NULL
+NULL,"OLG Pfäffikon",NULL
+NULL,"OLG Pfäffikon / OL Zimmerberg",NULL
+NULL,"OLG Pfäffikon / OLK Piz Hasi",NULL
+NULL,"OLG Pfäffikon/Galgenen",NULL
+NULL,"OLG Pfäffikon/OLG Schaffhausen",NULL
+NULL,"OLG Pfäffikon/Weisslingen",NULL
+NULL,"OLG Rymenzburg",NULL
+NULL,"OLG Rymenzburg/Galgenen",NULL
+NULL,"OLG Rymenzburg/OLK Wiggertal",NULL
+NULL,"OLG Saar",NULL
+NULL,"OLG Schaffhausen",NULL
+NULL,"OLG Schaffhausen / OLG Chur",NULL
+NULL,"OLG Schaffhausen / OLG Huttwil",NULL
+NULL,"OLG Schaffhausen/ OLG Dachsen",NULL
+NULL,"OLG Schaffhausen/OLG Pfäffikon",NULL
+NULL,"OLG Schaffhausen/UBOL",NULL
+NULL,"OLG Skandia",NULL
+NULL,"OLG Skandia / OLV Zug",NULL
+NULL,"OLG Skandia / ol norska",NULL
+NULL,"OLG Skandia/Hondrich",NULL
+NULL,"OLG Skandia/Huttwil",NULL
+NULL,"OLG Skandia/OL Regio Burgdorf",NULL
+NULL,"OLG Skandia/OLK Wiggertal",NULL
+NULL,"OLG St. Gallen/App.",NULL
+NULL,"OLG St. Gallen/App./OLG Basel",NULL
+NULL,"OLG St. Gallen/App./OLV Baselland",NULL
+NULL,"OLG St. Gallen/App/OLG Hondrich",NULL
+NULL,"OLG Stäfa",NULL
+NULL,"OLG Stäfa / OL Regio Wil",NULL
+NULL,"OLG Stäfa/O-Motion",NULL
+NULL,"OLG Stäfa/OLG Zürinord 04",NULL
+NULL,"OLG Stäfa/UBOL",NULL
+NULL,"OLG Suhr",NULL
+NULL,"OLG Säuliamt",NULL
+NULL,"OLG Säuliamt / OLV Luzern",NULL
+NULL,"OLG Säuliamt/Cordoba",NULL
+NULL,"OLG Säuliamt/Goldau",NULL
+NULL,"OLG TV Unterstrass",NULL
+NULL,"OLG Thun",NULL
+NULL,"OLG Thun / OL Regio Olten",NULL
+NULL,"OLG Thun / OLC Omström Sense",NULL
+NULL,"OLG Thun / ol norska",NULL
+NULL,"OLG Thun/ANCO",NULL
+NULL,"OLG Thun/OL Regio Burgdorf",NULL
+NULL,"OLG Thun/OLV Baselland",NULL
+NULL,"OLG Wald",NULL
+NULL,"OLG Wandfluh",NULL
+NULL,"OLG Weisslingen",NULL
+NULL,"OLG Weisslingen/Chur",NULL
+NULL,"OLG Welsikon",NULL
+NULL,"OLG Welsikon/OLC Kapreolo",NULL
+NULL,"OLG Welsikon/OLC Winterthur",NULL
+NULL,"OLG Welsikon/OLV Baselland",NULL
+NULL,"OLG Zürich",NULL
+NULL,"OLG Zürich / OLV Baselland",NULL
+NULL,"OLG Zürinord",NULL
+NULL,"OLG Zürinord 04",NULL
+NULL,"OLG/CO Wallis/Valais",NULL
+NULL,"OLJG Holde",NULL
+NULL,"OLK Argus",NULL
+NULL,"OLK Argus /  OLC Winterthur",NULL
+NULL,"OLK Argus / OLV Luzern",NULL
+NULL,"OLK Argus / SCOM Mendrisio",NULL
+NULL,"OLK Argus / UBOL",NULL
+NULL,"OLK Fricktal",NULL
+NULL,"OLK Fricktal / OLG Dachsen",NULL
+NULL,"OLK Piz Hasi",NULL
+NULL,"OLK Piz Hasi / OLG Cordoba",NULL
+NULL,"OLK Piz Hasi / OLG Säuliamt",NULL
+NULL,"OLK Rafzerfeld",NULL
+NULL,"OLK Rafzerfeld / OLC Kapreolo",NULL
+NULL,"OLK Rafzerfeld/OLG Davos",NULL
+NULL,"OLK Wiggertal",NULL
+NULL,"OLK Wiggertal / OLG Suhr",NULL
+NULL,"OLK Wiggertal/OLG Hondrich",NULL
+NULL,"OLP Hyogo, Japan",NULL
+NULL,"OLV Baselland",NULL
+NULL,"OLV Baselland/Kakowa",NULL
+NULL,"OLV Baselland/OLG Basel",NULL
+NULL,"OLV Baselland/OLK Wiggertal",NULL
+NULL,"OLV Baselland/Pfäffikon",NULL
+NULL,"OLV Illnau-Effretikon",NULL
+NULL,"OLV Landshut",NULL
+NULL,"OLV Langenthal",NULL
+NULL,"OLV Luzern",NULL
+NULL,"OLV Luzern / OL Zimmerberg",NULL
+NULL,"OLV Marta",NULL
+NULL,"OLV Steinberg / Deutschland",NULL
+NULL,"OLV Uslar",NULL
+NULL,"OLV Zug",NULL
+NULL,"OLV Zug / Freaks",NULL
+NULL,"OLV Zug / OLG Goldau",NULL
+NULL,"OLV Zug / OLG Säuliamt",NULL
+NULL,"OLV Zug / OLK Argus",NULL
+NULL,"OLV Zug / björnbär ok",NULL
+NULL,"OLV Zug/OLG Rymenzburg",NULL
+NULL,"OLV Zug/UBOL",NULL
+NULL,"OLV Zürich",NULL
+NULL,"Oberdiessbach TV",NULL
+NULL,"Omega",NULL
+NULL,"Omström/OLRegioOlten",NULL
+NULL,"Orientation Team Besançcon",NULL
+NULL,"Otepää SK",NULL
+NULL,"PG Hüttwilen",NULL
+NULL,"PG Neunforn",NULL
+NULL,"POLE France",NULL
+NULL,"PSE Budapest",NULL
+NULL,"PSV Elbe Dresden",NULL
+NULL,"PSV Leipzig",NULL
+NULL,"Pizol",NULL
+NULL,"Post SV Dresden",NULL
+NULL,"PowerBar",NULL
+NULL,"Prytanée Orientation",NULL
+NULL,"Quack OK",NULL
+NULL,"RC Steffisburg",NULL
+NULL,"RMOC Rocky Mountain",NULL
+NULL,"ROC / South Afrika",NULL
+NULL,"RRC Bern",NULL
+NULL,"RRC Gipf-Oberfrick",NULL
+NULL,"Rainbow OK",NULL
+NULL,"Rajamäen Rykmentti",NULL
+NULL,"Rasti-Nokia",NULL
+NULL,"Raumar OL",NULL
+NULL,"Red Roos",NULL
+NULL,"Ringsjö OK",NULL
+NULL,"Run Fit Thurgau",NULL
+NULL,"S.N.U.S",NULL
+NULL,"SAC Oberaargau",NULL
+NULL,"SAC Randen",NULL
+NULL,"SAC Sekt. Seeland",NULL
+NULL,"SC ASKÖ Henndorf",NULL
+NULL,"SC Am Bachtel",NULL
+NULL,"SC Am Bachtel/SAS",NULL
+NULL,"SC Münsingen",NULL
+NULL,"SC Ricken",NULL
+NULL,"SC Rubigen",NULL
+NULL,"SC Schwarzwasser",NULL
+NULL,"SC St. Moritz",NULL
+NULL,"SC Trin",NULL
+NULL,"SC Vättis",NULL
+NULL,"SC-Walhalla",NULL
+NULL,"SCOM Mendrisio",NULL
+NULL,"SG Scheidegg",NULL
+NULL,"SGSV",NULL
+NULL,"SK Pohjantähti",NULL
+NULL,"SLOW London",NULL
+NULL,"SPOOK",NULL
+NULL,"SSC Riehen",NULL
+NULL,"STB LA",NULL
+NULL,"STV Berg",NULL
+NULL,"STV Küssnacht",NULL
+NULL,"STV Rickenbach/Wilen",NULL
+NULL,"STV Singen",NULL
+NULL,"STV Vordemwald",NULL
+NULL,"SU KLAGENFURT",NULL
+NULL,"SUS Verein Kriens",NULL
+NULL,"SV Baindt (Deutschland)",NULL
+NULL,"SV Giffers-Tentlingen",NULL
+NULL,"SV Mietraching (D)",NULL
+NULL,"SV Planeta Radebeul",NULL
+NULL,"SV Robotron",NULL
+NULL,"SV Stettlen",NULL
+NULL,"SV Wannweil",NULL
+NULL,"SV Zollbrück",NULL
+NULL,"Sachsen-Marathon Dresden",NULL
+NULL,"Schulsport Adliswil",NULL
+NULL,"Seniors",NULL
+NULL,"Sesto 76",NULL
+NULL,"Ski-O Swiss",NULL
+NULL,"Skiklub Dresden",NULL
+NULL,"Smolensk",NULL
+NULL,"Societa Unitas Malcantone",NULL
+NULL,"Southern Michigan SMOC",NULL
+NULL,"Sportteam Lupsingen",NULL
+NULL,"Swiss Ice Hockey",NULL
+NULL,"Swiss O Week",NULL
+NULL,"Swiss Orienteering",NULL
+NULL,"Swiss Radio Orienteering/UBOL",NULL
+NULL,"Søllerød OK",NULL
+NULL,"T&amp;F Viking",NULL
+NULL,"TAOK",NULL
+NULL,"TG Hütten",NULL
+NULL,"TG Northeim",NULL
+NULL,"TGM Budenheim",NULL
+NULL,"TGV Horn",NULL
+NULL,"TJ Sokol Vizovice",NULL
+NULL,"TSG Bad König",NULL
+NULL,"TSG Meggen",NULL
+NULL,"TSV Deitingen",NULL
+NULL,"TSV Grünwald",NULL
+NULL,"TSV Nieder-Hilbersheim",NULL
+NULL,"TUS Jena",NULL
+NULL,"TUS Rüppurr Karlsruhe",NULL
+NULL,"TV 1898 Alsbach",NULL
+NULL,"TV ASZ Zürich",NULL
+NULL,"TV Bleienbach",NULL
+NULL,"TV Bolligen",NULL
+NULL,"TV Gebenstorf",NULL
+NULL,"TV Gelterkinden",NULL
+NULL,"TV Gempen",NULL
+NULL,"TV Gempen / OLG Basel",NULL
+NULL,"TV Hubersdorf",NULL
+NULL,"TV Huttwil/Kraftwerk-Rennteam",NULL
+NULL,"TV Kaufleute Zürich",NULL
+NULL,"TV Kippenheim /D",NULL
+NULL,"TV Koblenz",NULL
+NULL,"TV Küssnacht",NULL
+NULL,"TV Langnau",NULL
+NULL,"TV Leimbach",NULL
+NULL,"TV Lufingen",NULL
+NULL,"TV Luterbach",NULL
+NULL,"TV Luterbach / OLG Biberist SO",NULL
+NULL,"TV Lyss",NULL
+NULL,"TV Länggasse",NULL
+NULL,"TV Lüterkofen",NULL
+NULL,"TV Moers",NULL
+NULL,"TV Münchwilen",NULL
+NULL,"TV Neuenburg/Rhein",NULL
+NULL,"TV Nuglar",NULL
+NULL,"TV Pontresina",NULL
+NULL,"TV Postbeamte ZH",NULL
+NULL,"TV Radolfszell / Deutschland",NULL
+NULL,"TV Rothenfluh",NULL
+NULL,"TV Seen",NULL
+NULL,"TV Thayngen",NULL
+NULL,"TV Volketswil",NULL
+NULL,"TV Wila",NULL
+NULL,"TV Wollishofen",NULL
+NULL,"TV Wynigen",NULL
+NULL,"TV Zizenhausen",NULL
+NULL,"TV Zuzwil",NULL
+NULL,"TV Ägelsee",NULL
+NULL,"TVN Wien",NULL
+NULL,"Takas OK",NULL
+NULL,"Tampereen Pyrintö",NULL
+NULL,"Tous Azimuts Douai",NULL
+NULL,"Transilva Klausenburg",NULL
+NULL,"Treptower SV Berlin",NULL
+NULL,"Tri Club Aarau",NULL
+NULL,"Tri Fribourg",NULL
+NULL,"Tullinge SK",NULL
+NULL,"Tumba-Mälarhöjden OK",NULL
+NULL,"Tynset IF",NULL
+NULL,"UBOL",NULL
+NULL,"UBOL / CO-Lausanne-Jorat",NULL
+NULL,"UBOL / OLG Bern",NULL
+NULL,"UHC Frutigen",NULL
+NULL,"UOV Grenchen",NULL
+NULL,"UOV Langenthal",NULL
+NULL,"UOV Langnau",NULL
+NULL,"UOV Reiat",NULL
+NULL,"US Acli Unione Lombarda",NULL
+NULL,"US Primiero",NULL
+NULL,"USC Capriaschese",NULL
+NULL,"USC Magdeburg",NULL
+NULL,"USV Jena",NULL
+NULL,"USV TU Dresden",NULL
+NULL,"Uringa Orienteers",NULL
+NULL,"Vaajte",NULL
+NULL,"Varese Orienteering",NULL
+NULL,"Variant 5",NULL
+NULL,"Variant 5 / TG Biberist",NULL
+NULL,"Västerås SOK",NULL
+NULL,"WAT Wien",NULL
+NULL,"WOLF e.V.",NULL
+NULL,"WOW-Australia",NULL
+NULL,"Waldfreunde",NULL
+NULL,"Wybärgschnägg Nüeri",NULL
+NULL,"björnbär ok",NULL
+NULL,"bussola ok",NULL
+NULL,"everfit luzern",NULL
+NULL,"hungarian bandits",NULL
+NULL,"muurahaiskeko OK",NULL
+NULL,"ol norska",NULL
+NULL,"ol norska / OLG Bern",NULL
+NULL,"ol norska / OLG Huttwil",NULL
+NULL,"ol norska/ OLC Omström Sense",NULL
+NULL,"ol norska/UBOL",NULL
+NULL,"ol norska/ol.biel.seeland",NULL
+NULL,"ol.biel.seeland",NULL
+NULL,"ol.biel.seeland / OLC Omström",NULL
+NULL,"ol.biel.seeland / UBOL",NULL
+NULL,"ol.biel.seeland/OLG Bern",NULL
+NULL,"thurgorienta",NULL
+NULL,"thurgorienta / Glarner OLG",NULL
+NULL,"thurgorienta/OLC Winterthur",NULL
+NULL,"thurgorienta/UBOL",NULL
+NULL,"unitas malcantone",NULL

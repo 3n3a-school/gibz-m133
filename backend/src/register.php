@@ -3,11 +3,10 @@
 namespace M133;
 
 include_once __DIR__ . '/config.php';
-use M133\Template as Template;
 
 session_start();
 
-class Page {
+class RegisterPage extends Page {
     private $is_authenticated = false;
 
     function __construct(
@@ -22,11 +21,6 @@ class Page {
             $this->sendPage();
     }
 
-    function isAuthenticated() {
-        return isset($_SESSION['is_authenticated']) &&
-            $_SESSION['is_authenticated'] === true;
-    }
-
     function checkSession() {
         if ( $this->isAuthenticated() ) {      
 
@@ -34,17 +28,6 @@ class Page {
             exit();
 
         }
-    }
-
-    function arrayHasKeys( $haystack, $needles ) {
-        $contains = false;
-
-        foreach ($needles as $n) {
-            if (array_key_exists( $n, $haystack ))
-                $contains = true;
-        }
-
-        return $contains;
     }
 
     function checkFormSubmission() {
@@ -102,7 +85,7 @@ class Page {
     }
 }
 
-$page = new Page(
+$page = new RegisterPage(
     $config->template,
     $config
 );

@@ -3,10 +3,11 @@ CREATE TABLE IF NOT EXISTS ranking (
     participant_name VARCHAR(100) NOT NULL,
     event_id BIGINT,
     category_id BIGINT,
-    position int NOT NULL,
-    time BIGINT NOT NULL,
+    position int NULL DEFAULT NULL,
+    time varchar(100) NOT NULL,
     birthyear int NOT NULL,
     city VARCHAR(100) NOT NULL,
+    club VARCHAR(100) NULL DEFAULT NULL,
     FOREIGN KEY (event_id) REFERENCES event(id),
     FOREIGN KEY (category_id) REFERENCES category(id)
 );

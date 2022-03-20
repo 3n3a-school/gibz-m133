@@ -4,10 +4,10 @@ namespace M133;
 
 include_once __DIR__ . '/config.php';
 
-use M133\App as App;
+use M133\Page as Page;
 use M133\Validate as Validate;
 
-class RankingApp extends App {
+class IndexPage extends Page {
 
     function __construct(
         private Template $template,
@@ -71,24 +71,12 @@ class RankingApp extends App {
 
         }
     }
-
-    function getSessionValueIfExists( $key ) {
-        if (isset($_SESSION[$key])) {
-            return $_SESSION[$key];
-        }
-        return false;
-    }
-
-    function isAuthenticated() {
-        return isset($_SESSION['is_authenticated']) &&
-            $_SESSION['is_authenticated'] === true;
-    }
 }
 
 
 
 // Instantiate new App with Router...
-$app = new RankingApp(
+$index = new IndexPage(
     $config->template,
     $config->db,
     $config

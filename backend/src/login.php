@@ -6,7 +6,7 @@ session_start();
 
 include_once __DIR__ . '/config.php';
 
-class Page {
+class LoginPage extends Page {
     private $is_authenticated = false;
 
     function __construct(
@@ -17,13 +17,6 @@ class Page {
 
         if ( ! $this->is_authenticated )
             $this->sendPage();
-    }
-
-    function isNotAuthenticated() {
-        return ( 
-            ! isset($_SESSION['is_authenticated']) || 
-            $_SESSION['is_authenticated'] === false
-        );
     }
 
     function formKeysExist() {
@@ -93,7 +86,7 @@ class Page {
     }
 }
 
-$page = new Page(
+$page = new LoginPage(
     $config->template,
     $config
 );
