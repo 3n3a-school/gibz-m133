@@ -6,8 +6,6 @@ session_start();
 
 include_once __DIR__ . '/config.php';
 
-use M133\Template as Template;
-
 class Page {
     private $is_authenticated = false;
 
@@ -36,8 +34,7 @@ class Page {
 
     function checkSession() {
         if ( $this->isNotAuthenticated() &&
-            $this->formKeysExist() &&
-            $this->config->controllers['user']->usernameTaken( $_POST['username'] )
+            $this->formKeysExist()
              ) {
         
             session_unset();
@@ -47,9 +44,22 @@ class Page {
             $username = $_POST['username'];
             $password = $_POST['password'];
 
-            if ( ! $this->config->controllers['user']->validCreds($username, $password) ) {
+            $isUsernameTaken = $this->config->controllers['user']->usernameTaken( $_POST['username'] );
+            
+            if ( ! $isUsernameTaken ) {
+                echo "User not registered.";
+                error_log("[LOGIN-ATTEMPT]: $username - registered: " . ($isUsernameTaken ? "true" : "false"));
+                exit( );
+            }
+
+            $areCredsValid = $this->config->controllers['user']->validCreds($username, $password);
+
+            error_log("[LOGIN-ATTEMPT]: $username - registered: " . ($isUsernameTaken ? "true" : "false") . " - creds: " . ($areCredsValid ? "true" : "false"));
+
+            if ( ! $areCredsValid &&
+                $isUsernameTaken ) {
                 echo "Wrong user, password combination.";
-                exit();
+                exit( );
             }
             
             $_SESSION['username'] = $_POST['username'];

@@ -23,9 +23,9 @@ class RankingApp extends App {
             // Setup not done
             // Start installation
             header( 'Location: /install.php' );
+            error_log("[INSTALLATION] Starting Installation 🤩");
             exit();
         }
-        error_log("Already installed");
     }
 
     public function initRoutes() {

@@ -27,7 +27,8 @@ class UserController extends \M133\Controller {
 
         $existance_sql = "SELECT username FROM users WHERE username = ?";
 
-        $data = $this->db->queryData($existance_sql, [$username], "Username " . $username)[0];
+        $query_data = $this->db->queryData($existance_sql, [$username], "Username " . $username);
+        $data = ! empty ($query_data) ? $query_data[0] : NULL;
 
         if ( ! empty($data) &&
             $data['username'] == $username)
@@ -38,10 +39,13 @@ class UserController extends \M133\Controller {
     public function validCreds( $username, $password ) {
 
         $user_sql = "SELECT username, password FROM users WHERE username = ?";
-        $data = $this->db->queryData($user_sql, [$username], "Username " . $username)[0];
+        $query_data = $this->db->queryData($user_sql, [$username], "Username " . $username);
+        $data = ! empty ($query_data) ? $query_data[0] : NULL;
 
-        if ($data['username'] == $username && 
-        password_verify( $password, $data['password']))
+        if ( ! empty($data) &&
+            $data['username'] == $username && 
+            password_verify( $password, $data['password'])
+        )
             return true;
         return false;
     }
