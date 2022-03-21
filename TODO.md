@@ -10,8 +10,8 @@
 - [x] create database controller
 	* globally accessible across all controllers
 	* automatic init of database -> sql table creation (install.php?)
-- [ ] fix installer
-- [ ] add additional prefill to installer
+- [x] fix installer
+- [x] add additional prefill to installer
 - [ ] create api endpoints (w controllers)
 	* /admin
 		* /sysinfo
@@ -29,9 +29,7 @@
 		* /import
 		* create event
 		* update event
-- [ ] Prefill clubs & categories
-- [ ] add example data into ranking
-
+		
 ## Frontend
 
 - [x] one for users/organizers
