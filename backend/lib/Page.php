@@ -4,6 +4,23 @@ namespace M133;
 abstract class Page {
     abstract public function sendPage(); 
 
+    function checkInstalled($path) {
+        if ( ! file_exists( $path ) ) {
+            // Setup not done
+            // Start installation
+            header( 'Location: /install.php' );
+            error_log("[INSTALLATION] Starting Installation 🤩");
+            exit();
+        }
+    }
+
+    function initRoutes() {
+        // Authentication
+        session_start();
+        
+        header('X-Powered-By: eServer');
+    }
+
     function arrayHasKeys( $haystack, $needles ) {
         $contains = false;
 

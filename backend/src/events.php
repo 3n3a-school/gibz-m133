@@ -5,9 +5,8 @@ namespace M133;
 include_once __DIR__ . '/config.php';
 
 use M133\Page as Page;
-use M133\Validate as Validate;
 
-class IndexPage extends Page {
+class EventPage extends Page {
 
     function __construct(
         private Template $template,
@@ -21,18 +20,26 @@ class IndexPage extends Page {
 
     public function sendPage() {
         if ($this->isAuthenticated()) {
-            
+
+            $events = $this->config->controllers['event']->getAllEvents();
+            $events_html = "";
+
+            foreach ($events as $event) {
+                $name = $event["name"];
+                $id = $event["id"];
+                $events_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name], true);
+            }
             
             $username = $this->getSessionValueIfExists('username');
             $email = $this->config->controllers['user']->getUser( $username, ["email"] )['email'];
             $this->template->renderIntoBase(
                 [
-                    'title' => 'Home',
-                    'app_content' => 'index.html',
+                    'title' => 'Events',
+                    'app_content' => 'events.html',
                     'username' => $username ?? "User",
                     'full_name' => $username ?? "User",
                     'email' => $email,
-                    'ranking_table' => 'components/ranking_table.html'
+                    'events' => $events_html
                 ],
                 $this->config->menus
             );
@@ -48,7 +55,7 @@ class IndexPage extends Page {
 
 
 // Instantiate new App with Router...
-$index = new IndexPage(
+$index = new EventPage(
     $config->template,
     $config->db,
     $config

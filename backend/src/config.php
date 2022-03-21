@@ -10,10 +10,25 @@ use M133\DatabaseConfig as DbConfig;
 use M133\Database as Database;
 use M133\Template as Template;
 use M133\Controllers\UserController as UserController;
+use M133\Controllers\EventsController as EventsController;
 
 class Config {
 
     public $controllers = [];
+
+    public $menus = [
+        'main' => [
+            "Home" => "/index.php",
+            "Ranglisten" => "",
+            "Kategorien"=> "",
+            "Wettkämpfe" => "/events.php"
+        ],
+        'person' => [
+            "Profile" => "#show-user-modal",
+            "Settings" => "",
+            "Logout" => "/logout.php"
+        ]
+    ];
    
     function __construct(
         public Template $template,
@@ -23,6 +38,7 @@ class Config {
         ini_set("error_log", __DIR__ . "/log/errors.log");
 
         $this->controllers['user'] = new UserController($this->db);
+        $this->controllers['event'] = new EventsController($this->db);
     }
 }
 
