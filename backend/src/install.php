@@ -85,6 +85,13 @@ class TableCreator1000 {
                 "is-file" => true,
                 "sql" => $this->fh->read(__DIR__ . '/sql/prefill/club.sql'),
             ],
+            "event" => [
+                "sql" => "INSERT INTO event (name, organizer_id, date, place) VALUES (?,?,FROM_UNIXTIME(?),?)",
+                "values" => [
+                    [ "Event One", 1154, strtotime("+3 day"), "Bern"],
+                    [ "Event Two", 1156, strtotime("+6 day"), "Bern"]
+                ]
+            ],
             "ranking" => [
                 "is-file" => true,
                 "sql" => $this->fh->read(__DIR__ . '/sql/prefill/ranking.sql'),
