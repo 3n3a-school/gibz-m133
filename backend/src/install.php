@@ -9,7 +9,8 @@ class TableCreator1000 {
     private $setup_file = __DIR__ . '/.setupdone';
 
     function __construct(
-        private Database $db
+        private Database $db,
+        private FileHandler $fh
     ) {
         $this->checkInstalledAlready();
         $this->createTables();
@@ -75,17 +76,33 @@ class TableCreator1000 {
                 "values" => [ 
                     [ "Administrative", "User", strtotime("1. January 1999"), NULL, "admin", password_hash("admin", PASSWORD_ARGON2I), "admin@email.com", true, true ]
                 ]
-            ]
+            ],
+            "category" => [
+                "is-file" => true,
+                "sql" => $this->fh->read(__DIR__ . '/sql/prefill/category.sql'),
+            ],
+            "club" => [
+                "is-file" => true,
+                "sql" => $this->fh->read(__DIR__ . '/sql/prefill/club.sql'),
+            ],
+            "ranking" => [
+                "is-file" => true,
+                "sql" => $this->fh->read(__DIR__ . '/sql/prefill/ranking.sql'),
+            ],
         ];
 
         foreach ($prefill_sql as $sql_file_name => $sql_file_value) {
-            // add prefill all values
-            foreach ($sql_file_value['values'] as $value) {
-                $this->db->addData(
-                    $sql_file_value['sql'],
-                    $value,
-                    $sql_file_name . "_prefill"
-                );
+            if (array_key_exists('is-file', $sql_file_value)) {
+                $this->db->createObject($sql_file_value['sql'], $sql_file_name . "_prefill");
+            } else {
+                // add prefill all values
+                foreach ($sql_file_value['values'] as $value) {
+                    $this->db->changeData(
+                        $sql_file_value['sql'],
+                        $value,
+                        $sql_file_name . "_prefill"
+                    );
+                }
             }
         }
 
@@ -101,5 +118,6 @@ class TableCreator1000 {
 }
 
 $table_creator = new TableCreator1000(
-    $config->db
+    $config->db,
+    new FileHandler()
 );

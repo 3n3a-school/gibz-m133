@@ -10,6 +10,8 @@
 - [x] create database controller
 	* globally accessible across all controllers
 	* automatic init of database -> sql table creation (install.php?)
+- [ ] fix installer
+- [ ] add additional prefill to installer
 - [ ] create api endpoints (w controllers)
 	* /admin
 		* /sysinfo
