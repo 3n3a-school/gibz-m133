@@ -30,11 +30,15 @@
 		* create event
 		* update event
 		
+	
 ## Frontend
 
 - [x] one for users/organizers
 - [x] add ranking tables
 - [x] add events table
+- [ ] add club select to registration
+- [ ] add event meta in categories table
+- [ ] create importer
 
 
 ## SQL Queries
