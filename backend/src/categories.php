@@ -32,22 +32,21 @@ class CategoryPage extends Page {
     public function sendPage() {
         if ($this->isAuthenticated()) {
 
-            $this->current_event_id
+            $categories = $this->config->controllers['category']->getAllCategories();
+            $categories_html = "";
 
-            // $categories = $this->config->controllers['category']->getAllEvents();
-            // $categories_html = "";
-
-            // foreach ($events as $event) {
-            //     $name = $event["name"];
-            //     $id = "categories.php?event_id=" . $event["id"];
-            //     $events_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name], true);
-            // }
+            foreach ($categories as $cat) {
+                $name = $cat["name"];
+                $id = "rankings.php?event_id=" . $this->current_event_id . "&category_id=" . $cat['id'];
+                $categories_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name], true);
+            }
             
             $username = $this->getSessionValueIfExists('username');
             $email = $this->config->controllers['user']->getUser( $username, ["email"] )['email'];
+            $event_name = $this->config->controllers['event']->getEventName($this->current_event_id) ?? "No Event Name found";
             $this->template->renderIntoBase(
                 [
-                    'title' => 'Categories ' . $event['name'],
+                    'title' => 'Categories: ' . $event_name,
                     'app_content' => 'categories.html',
                     'username' => $username ?? "User",
                     'full_name' => $username ?? "User",

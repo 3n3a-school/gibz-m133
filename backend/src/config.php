@@ -11,11 +11,15 @@ use M133\Database as Database;
 use M133\Template as Template;
 use M133\Controllers\UserController as UserController;
 use M133\Controllers\EventsController as EventsController;
+use M133\Controllers\CategoriesController as CategoriesController;
 
 class Config {
 
     public $controllers = [];
 
+    /**
+     * The menus displayed on all pages
+     */
     public $menus = [
         'main' => [
             "Home" => "/index.php",
@@ -39,6 +43,7 @@ class Config {
 
         $this->controllers['user'] = new UserController($this->db);
         $this->controllers['event'] = new EventsController($this->db);
+        $this->controllers['category'] = new CategoriesController($this->db);
     }
 }
 
