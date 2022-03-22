@@ -75,7 +75,11 @@ class TableCreator1000 {
                         VALUES (?, ?, FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?)",
                 "values" => [ 
                     [ "Administrative", "User", strtotime("1. January 1999"), NULL, "admin", password_hash("admin", PASSWORD_ARGON2I), "admin@email.com", true, true ]
-                ]
+                    ]
+            ],
+            "user_role" => [
+                "sql" => "INSERT INTO user_role (user_id, role_id) VALUES (?,?)",
+                "values" => [ [1, 2] ]
             ],
             "category" => [
                 "is-file" => true,
@@ -95,6 +99,10 @@ class TableCreator1000 {
             "ranking" => [
                 "is-file" => true,
                 "sql" => $this->fh->read(__DIR__ . '/sql/prefill/ranking.sql'),
+            ],
+            "event_meta" => [
+                "is-file" => true,
+                "sql" => $this->fh->read(__DIR__ . '/sql/prefill/event_meta.sql'),
             ],
         ];
 

@@ -7,7 +7,7 @@ class RankingsController extends \M133\Controller {
 
         $rank_sql = "SELECT participant_name, position, time, birthyear, city, club, category.name as category_name FROM ranking
         JOIN category ON category_id = category.id
-        WHERE category.name = ?
+        WHERE category.id = ?
         AND event_id = ?
         ORDER BY position ASC";
 
