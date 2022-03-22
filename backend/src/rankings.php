@@ -36,12 +36,18 @@ class RankingPage extends Page {
         if ($this->isAuthenticated()) {
 
             $ranking = $this->config->controllers['rank']->getRanking( $this->current_event_id, $this->current_category_id );
-            $ranking_html = "<pre>" . print_r($ranking, true) . "</pre>";
+            $ranking_entries = "";
 
-            // foreach ($categories as $cat) {
-            //     $name = $cat["name"];
-            //     $categories_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name], true);
-            // }
+            foreach ($ranking as $r) {
+                $ranking_entries .= $this->template->render('components/ranking_table_entry.html', [
+                    "position"=>$r['position'],
+                    "full_name"=>$r['participant_name'],
+                    "birthyear"=>$r['birthyear'],
+                    "city"=>$r['city'],
+                    "club"=>$r['club'],
+                    "time"=>$r['time'],
+                ], true);
+            }
             
             $username = $this->getSessionValueIfExists('username');
             $email = $this->config->controllers['user']->getUser( $username, ["email"] )['email'];
@@ -54,7 +60,8 @@ class RankingPage extends Page {
                     'username' => $username ?? "User",
                     'full_name' => $username ?? "User",
                     'email' => $email,
-                    'rankings' => $ranking_html
+                    'ranking_table' => 'components/ranking_table.html',
+                    'entries' => $ranking_entries
                 ],
                 $this->config->menus
             );
