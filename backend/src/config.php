@@ -12,6 +12,7 @@ use M133\Template as Template;
 use M133\Controllers\UserController as UserController;
 use M133\Controllers\EventsController as EventsController;
 use M133\Controllers\CategoriesController as CategoriesController;
+use M133\Controllers\RankingsController as RankingsController;
 
 class Config {
 
@@ -44,6 +45,7 @@ class Config {
         $this->controllers['user'] = new UserController($this->db);
         $this->controllers['event'] = new EventsController($this->db);
         $this->controllers['category'] = new CategoriesController($this->db);
+        $this->controllers['rank'] = new RankingsController($this->db);
     }
 }
 
