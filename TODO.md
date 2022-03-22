@@ -33,8 +33,8 @@
 ## Frontend
 
 - [x] one for users/organizers
-- [ ] add ranking tables
-- [ ] add events table
+- [x] add ranking tables
+- [x] add events table
 
 
 ## SQL Queries

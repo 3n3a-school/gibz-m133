@@ -24,8 +24,6 @@ class Config {
     public $menus = [
         'main' => [
             "Home" => "/index.php",
-            "Ranglisten" => "",
-            "Kategorien"=> "",
             "Wettkämpfe" => "/events.php"
         ],
         'person' => [
