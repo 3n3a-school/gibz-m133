@@ -26,7 +26,8 @@ class Config {
     public $menus = [
         'main' => [
             "Home" => "/index.php",
-            "Wettkämpfe" => "/events.php"
+            "Events" => "/events.php",
+            "Calendar" => "/calendar.php"
         ],
         'person' => [
             "Profile" => "#show-user-modal",

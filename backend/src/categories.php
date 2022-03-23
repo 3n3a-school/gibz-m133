@@ -10,6 +10,8 @@ class CategoryPage extends Page {
 
     private $current_event_id;
 
+
+    // overwrites parent _Page_'s constructor
     function __construct(
         public Template $template,
         public Database $database,
@@ -37,8 +39,12 @@ class CategoryPage extends Page {
 
         foreach ($categories as $cat) {
             $name = $cat["name"];
-            $id = "rankings.php?event_id=" . $this->current_event_id . "&category_id=" . $cat['id'];
-            $categories_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name], true);
+            $id = $cat['id'];
+            $categories_html .= $this->template->render('components/event_item.html', [
+                "id"=>$id,
+                "name"=>$name, 
+                "url_prefix"=>"rankings.php?event_id=" . $this->current_event_id . "&category_id=",
+            ], true);
         }
         
         $event_name = $this->config->controllers['event']->getEventName($this->current_event_id) ?? "No Event Name found";
@@ -51,8 +57,6 @@ class CategoryPage extends Page {
         );
     }
 }
-
-
 
 // Instantiate new App with Router...
 $index = new CategoryPage(

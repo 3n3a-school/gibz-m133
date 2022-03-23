@@ -12,23 +12,6 @@
 	* automatic init of database -> sql table creation (install.php?)
 - [x] fix installer
 - [x] add additional prefill to installer
-- [ ] create api endpoints (w controllers)
-	* /admin
-		* /sysinfo
-		* /users
-			* /create
-			* /delete
-			* /disable
-			* /update
-		* delete event
-	* /ranking
-	* /category
-	* /event
-	* /me
-	* /organizer
-		* /import
-		* create event
-		* update event
 		
 	
 ## Frontend
@@ -36,7 +19,7 @@
 - [x] one for users/organizers
 - [x] add ranking tables
 - [x] add events table
-- [ ] add club select to registration
+- [x] add club select to registration
 - [ ] add event meta in categories table
 - [ ] create importer
 

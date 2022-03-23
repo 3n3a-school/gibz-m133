@@ -58,7 +58,7 @@ class RankingPage extends Page {
                 'app_content' => 'rankings.html',
                 'title' => 'Ranking: ' . $event_name . ': ' . $cat_name,
                 'ranking_table' => 'components/ranking_table.html',
-                'entries' => $ranking_entries
+                'entries' => $ranking_entries,
             ]
         );
     }
