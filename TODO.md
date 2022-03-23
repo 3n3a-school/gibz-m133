@@ -20,7 +20,7 @@
 - [x] add ranking tables
 - [x] add events table
 - [x] add club select to registration
-- [ ] add event meta in categories table
+- [x] add event meta in event calender
 - [ ] create importer
 
 
