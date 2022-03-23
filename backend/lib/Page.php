@@ -20,7 +20,7 @@ abstract class Page {
     function sendPageWrapper( $tags ) {
         if ($this->isAuthenticated()) {
             $username = $this->getSessionValueIfExists('username');
-            $user = $this->config->controllers['user']->getUser( $username, ["first_name", "last_name", "email", "username"] );
+            $user = $this->config->controllers['user']->getUserWClub( $username, ["first_name", "last_name", "email", "username"] );
             $this->template->renderIntoBase(
                 $tags,
                 $this->config->menus,

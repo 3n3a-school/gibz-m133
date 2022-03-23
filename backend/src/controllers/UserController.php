@@ -16,6 +16,24 @@ class UserController extends \M133\Controller {
         return NULL;
     }
 
+    public function getUserWClub( $username, $fields=["username", "first_name", "last_name"] ) {
+
+        $user_fields = implode( ", ", $fields);
+        $user_fields .= ", club.name AS club_name";
+        $user_sql = "SELECT $user_fields
+        FROM users 
+        LEFT JOIN club
+        ON club_id = club.id
+        WHERE username = ?";
+
+        $query_data = $this->db->queryData($user_sql, [ $username ], "Username " . $username);
+        $data = ! empty ($query_data) ? $query_data[0] : NULL;
+
+        if ( ! empty($data) )
+            return $data;
+        return NULL;
+    }
+
     public function addUser( $userinfo ) {
         $user_sql = "INSERT INTO users (first_name, last_name, birthdate, club_id, username, password, email, is_active, is_verified) VALUES (?, ?, FROM_UNIXTIME(?), ?, ?, ?, ?, ?, ?)";
 

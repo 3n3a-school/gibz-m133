@@ -51,6 +51,7 @@ class Template {
             'username' => $user['username'],
             'full_name' => $user['first_name']. " ". $user['last_name'],
             'email' => $user['email'],
+            'club' => $user['club_name']
         ], true);
 
         $tags = [
