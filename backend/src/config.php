@@ -19,6 +19,7 @@ class Config {
 
     public $controllers = [];
     public $setupDonePath = __DIR__ . '/.setupdone';
+    private $logfilePath  =__DIR__ . "/log/errors.log";
 
     /**
      * The menus displayed on all pages
@@ -40,8 +41,14 @@ class Config {
         public Template $template,
         public Database $db,
     ) {
-        ini_set("log_errors", 1);
-        ini_set("error_log", __DIR__ . "/log/errors.log");
+        if (array_key_exists('DEBUG', $_ENV) && $_ENV['DEBUG'] == 1) {
+            if (!file_exists($this->logfilePath)) {
+                // create file
+                file_put_contents( $this->logfilePath, "--- ERRORS LOG ---\n");
+            }
+            ini_set("log_errors", 1);
+            ini_set("error_log", $this->logfilePath);
+        }
 
         $this->controllers['user'] = new UserController($this->db);
         $this->controllers['event'] = new EventsController($this->db);

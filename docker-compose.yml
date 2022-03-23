@@ -17,6 +17,7 @@ services:
             DB_USER: m133
             DB_PASS: m133
             DB_DB: m133
+            DEBUG: 1
         ports:
             - 8002:80
         networks:
