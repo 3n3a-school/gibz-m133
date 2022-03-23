@@ -23,7 +23,7 @@ class UserController extends \M133\Controller {
             $userinfo['first_name'],
             $userinfo['last_name'],
             $userinfo['birthdate'],
-            NULL,
+            $userinfo['club_id'],
             $userinfo['username'],
             $userinfo['password'],
             $userinfo['email'],

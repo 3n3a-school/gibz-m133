@@ -23,6 +23,21 @@
                 <span class="text-gray-700">Birthdate</span>
                 <input id="birthdate" name="birthdate" type="date" autocomplete="birthdate" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Birthdate">
             </label>
+            <label for="club" class="block">
+                <span class="text-gray-700">Club</span>
+                <select id="club" name="club" autocomplete="club" required class="
+                block
+                w-full
+                mt-1
+                rounded-md
+                border-gray-300
+                shadow-sm
+                focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+              " placeholder="Club">
+                  <option></option>
+                  {{club_list}}
+                </select>
+            </label>
             <label for="email" class="block">
                 <span class="text-gray-700">Email</span>
                 <input id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email Address">

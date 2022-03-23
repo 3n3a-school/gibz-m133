@@ -2,6 +2,38 @@
 namespace M133;
 
 abstract class Page {
+
+    public Template $template;
+    public Database $database;
+    
+    function __construct(
+        public $config
+    ) {
+        $this->template = $this->config->template;
+        $this->database = $this->config->db;
+
+        $this->checkInstalled($this->config->setupDonePath);
+        $this->initRoutes();
+        $this->sendPage();
+    }
+
+    function sendPageWrapper( $tags ) {
+        if ($this->isAuthenticated()) {
+            $username = $this->getSessionValueIfExists('username');
+            $user = $this->config->controllers['user']->getUser( $username, ["first_name", "last_name", "email", "username"] );
+            $this->template->renderIntoBase(
+                $tags,
+                $this->config->menus,
+                $user
+            );
+
+        } else {
+            
+            header('Location: /login.php');
+
+        }
+    }
+
     abstract public function sendPage(); 
 
     function checkInstalled($path) {
@@ -14,7 +46,7 @@ abstract class Page {
         }
     }
 
-    function initRoutes() {
+    public function initRoutes() {
         // Authentication
         session_start();
         

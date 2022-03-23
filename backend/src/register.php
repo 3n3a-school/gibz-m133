@@ -10,8 +10,8 @@ class RegisterPage extends Page {
     private $is_authenticated = false;
 
     function __construct(
-        private Template $template,
-        private $config,
+        public Template $template,
+        public $config,
     ) {
         $this->checkSession();
 
@@ -39,10 +39,11 @@ class RegisterPage extends Page {
                 "username", 
                 "password",
                 "birthdate",
+                "club",
             ]) &&
             Validate::Alphanumeric($_POST['username']) &&
-            Validate::Alphanumeric($_POST['first_name']) &&
-            Validate::Alphanumeric($_POST['last_name']) &&
+            Validate::String($_POST['first_name']) &&
+            Validate::String($_POST['last_name']) &&
             Validate::Email($_POST['email'])
         ) {
 
@@ -54,6 +55,7 @@ class RegisterPage extends Page {
             $registration['last_name'] = $_POST['last_name'];
             $registration['birthdate'] = strtotime($_POST['birthdate']);
             $registration['email'] = $_POST['email'];
+            $registration['club_id'] = (int)$_POST['club'];
 
             if ( $this->config->controllers['user']->usernameTaken(
                 $registration['username']
@@ -72,6 +74,11 @@ class RegisterPage extends Page {
     }
 
     function sendPage() {
+        $clubs = $this->config->controllers['club']->getAllClubs();
+        $clubs_html = "";
+        foreach ($clubs as $club) {
+            $clubs_html .= "<option value=\"".$club['id']."\">".$club['name']."</option>";
+        }
         $this->template->render(
             'base.html', [
                 'auth' => $_SESSION['is_authenticated'] ? 'true' : 'false',
@@ -79,7 +86,8 @@ class RegisterPage extends Page {
                 'content' => 'register.html',
                 'head_scripts' => 'head_scripts.html',
                 'footer' => 'footer.html',
-                'address' => ''
+                'address' => '',
+                'club_list' => $clubs_html
             ]
         );
     }

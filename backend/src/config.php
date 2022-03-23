@@ -13,10 +13,12 @@ use M133\Controllers\UserController as UserController;
 use M133\Controllers\EventsController as EventsController;
 use M133\Controllers\CategoriesController as CategoriesController;
 use M133\Controllers\RankingsController as RankingsController;
+use M133\Controllers\ClubsController as ClubsController;
 
 class Config {
 
     public $controllers = [];
+    public $setupDonePath = __DIR__ . '/.setupdone';
 
     /**
      * The menus displayed on all pages
@@ -44,6 +46,7 @@ class Config {
         $this->controllers['event'] = new EventsController($this->db);
         $this->controllers['category'] = new CategoriesController($this->db);
         $this->controllers['rank'] = new RankingsController($this->db);
+        $this->controllers['club'] = new ClubsController($this->db);
     }
 }
 

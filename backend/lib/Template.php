@@ -37,7 +37,7 @@ class Template {
         $this->current_page = $_SERVER["SCRIPT_NAME"];
     }
 
-    public function renderIntoBase( $additional_tags, $menus ) {
+    public function renderIntoBase( $additional_tags, $menus, $user ) {
         [$mobile_personmenu, $desktop_personmenu] = $this->renderPersonMenu( $menus['person'] );
 
         [$desktop_menu, $mobile_menu] = $this->renderMainMenu( $menus['main'] );
@@ -48,9 +48,9 @@ class Template {
             'modal_body' => 'components/modal_body_user.html',
             'modal_ok_btn' => 'Close',
             'modal_no_btn' => 'Cancel',
-            'username' => $additional_tags['username'],
-            'full_name' => $additional_tags['full_name'],
-            'email' => $additional_tags['email']
+            'username' => $user['username'],
+            'full_name' => $user['first_name']. " ". $user['last_name'],
+            'email' => $user['email'],
         ], true);
 
         $tags = [
@@ -62,7 +62,10 @@ class Template {
             'desktop_personmenu' => $desktop_personmenu,
             'desktop_menu' => $desktop_menu,
             'mobile_menu' => $mobile_menu,
-            'user_modal' => $user_modal
+            'user_modal' => $user_modal,
+            'username' => $user['username'],
+            'full_name' => $user['first_name']. " ". $user['last_name'],
+            'email' => $user['email'],
         ];
 
         $tags = array_merge( $tags, $additional_tags );

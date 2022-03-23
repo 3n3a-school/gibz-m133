@@ -10,8 +10,8 @@ class LoginPage extends Page {
     private $is_authenticated = false;
 
     function __construct(
-        private Template $template,
-        private $config
+        public Template $template,
+        public $config
     ) {
         $this->checkSession();
 
