@@ -26,7 +26,7 @@
 
 ## SQL Queries
 
-**get event metadata**
+**get event metadata** ✅
 
 ```sql
 SELECT name, description
@@ -53,7 +53,7 @@ ON club_id = club.id
 WHERE username = ?
 ```
 
-**get users' rankings**
+**get users' rankings** 
 
 ```sql
 SELECT [only select what you need...] FROM user_ranking
@@ -75,7 +75,7 @@ AND users.username = ?
 GROUP BY event.name
 ```
 
-**get mneta for category in event**
+**get mneta for category in event** ✅
 
 ```sql
 SELECT * FROM event_category_meta
@@ -84,18 +84,18 @@ WHERE event_id = ?
 AND category.name = ?
 ```
 
-**get list of categories**
+**get list of categories** ✅
 
 ```sql
 SELECT id, name FROM category
 ```
 
-**get ranking of category in event**
+**get ranking of category in event** ✅
 
 ```sql
 SELECT * FROM ranking
 JOIN category ON category_id = category.id
 WHERE category.name = ?
 AND event_id = ?
-ORDER BY position ASC
+ORDER BY -position DESC
 ```

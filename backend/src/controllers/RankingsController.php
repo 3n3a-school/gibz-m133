@@ -9,7 +9,8 @@ class RankingsController extends \M133\Controller {
         JOIN category ON category_id = category.id
         WHERE category.id = ?
         AND event_id = ?
-        ORDER BY position ASC";
+        -- make NULLS last in sorting
+        ORDER BY -position DESC";
 
         $query_data = $this->db->queryData($rank_sql, [ $category_id, $event_id ], "RankingTable");
         $data = ! empty ($query_data) ? $query_data : NULL;
