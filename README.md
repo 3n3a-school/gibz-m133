@@ -24,7 +24,11 @@ Servers this should already be present in the `.htaccess` file.
 ## Import of Ranking Lists
 
 * Can import csv's from `o-l.ch`, where is _kind=all&csv=1_
-* need to go to `import.php`
+
+1. Download from _o-l.ch_
+2. Change file extension to `.csv`
+3. Open in Sublime Text and _Save with Encoding > UTF-8_
+4. Import in Webapp
 
 ### Installation
 

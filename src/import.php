@@ -50,6 +50,7 @@ class ImportPage extends Page {
             $_POST['event']
         );
         $this->importer->saveRankingList();
+        $this->config->controllers['rank']->addUserRankings();
         exit();
     }
 
