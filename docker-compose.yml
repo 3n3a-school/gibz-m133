@@ -8,8 +8,8 @@ services:
         depends_on:
             - db
         volumes:
-            # - ./src:/var/www/html/
-            - webserver:/var/www/html/
+            - ./src:/var/www/html/
+            # - webserver:/var/www/html/
         environment:
             DB_HOST: db
             DB_PORT: 3306
