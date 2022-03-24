@@ -53,29 +53,7 @@ ON club_id = club.id
 WHERE username = ?
 ```
 
-**get users' rankings** 
-
-```sql
-SELECT [only select what you need...] FROM user_ranking
-JOIN ranking ON user_ranking.ranking_id = ranking.id
-JOIN users ON user_ranking.user_id = users.id
-WHERE hidden = FALSE
-AND users.username = ?
-```
-
-**get users rankings (raw)**
-
-```sql
-SELECT * FROM users
-    INNER JOIN ranking 
-    ON ranking.participant_name = (
-        SELECT CONCAT(users.first_name, ' ', users.last_name) AS full_name
-    ) AND
-    ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
-    ranking.club = (SELECT name FROM club WHERE id = users.club_id)
-```
-
-**trigger on ranking -> find users**
+**trigger on ranking -> find users** ✅
 
 ```sql
 INSERT INTO user_ranking (user_id, ranking_id)
@@ -86,18 +64,22 @@ INSERT INTO user_ranking (user_id, ranking_id)
 		) AND
 		ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
 		ranking.club = (SELECT name FROM club WHERE id = users.club_id)
+		WHERE users.id NOT IN (
+			SELECT user_id FROM user_ranking
+		)
 ```
 
-**get events user participated in**
+**get events user participated in** ✅
 
 ```sql
-SELECT users.username, event.name FROM user_ranking
+SELECT users.id AS user_id, users.username, event.id AS event_id, event.name, category.name AS category_name,
+ranking.position, ranking.time
+FROM user_ranking
 JOIN ranking ON user_ranking.ranking_id = ranking.id
 JOIN users ON user_ranking.user_id = users.id
 JOIN event ON ranking.event_id = event.id
-WHERE hidden = FALSE
-AND users.username = ?
-GROUP BY event.name
+JOIN category ON ranking.category_id = category.id
+WHERE users.id = ?
 ```
 
 **get mneta for category in event** ✅

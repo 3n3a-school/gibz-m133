@@ -28,7 +28,8 @@ class Config {
         'main' => [
             "Home" => "/index.php",
             "Events" => "/events.php",
-            "Calendar" => "/calendar.php"
+            "Calendar" => "/calendar.php",
+            "Your Rankings" => "/user_rankings.php"
         ],
         'person' => [
             "Profile" => "#show-user-modal",
