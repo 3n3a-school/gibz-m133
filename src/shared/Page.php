@@ -20,6 +20,7 @@ abstract class Page {
     function sendPageWrapper( $tags ) {
         if ($this->hasAdmin()) {
             $this->config->menus['person']['Import Ranking'] = "/import.php";
+            $this->config->menus['person']['Create Event'] = "/add_event.php";
         }
 
         if ($this->isAuthenticated()) {
