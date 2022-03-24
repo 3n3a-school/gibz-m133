@@ -26,14 +26,19 @@ class RankingsController extends \M133\Controller {
      */
     public function addUserRankings() {
 
-        $user_ranks_sql = "INSERT INTO user_ranking (user_id, ranking_id)
-        SELECT users.id, ranking.id FROM users
-            INNER JOIN ranking 
-            ON ranking.participant_name = (
-                SELECT CONCAT(users.first_name, ' ', users.last_name) AS full_name
-            ) AND
-            ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
-            ranking.club = (SELECT name FROM club WHERE id = users.club_id)";
+        $user_ranks_sql = "
+        INSERT INTO user_ranking (user_id, ranking_id)
+            SELECT users.id, ranking.id FROM users
+                INNER JOIN ranking 
+                ON ranking.participant_name = (
+                    SELECT CONCAT(users.first_name, ' ', users.last_name) AS full_name
+                ) AND
+                ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
+                ranking.club = (SELECT name FROM club WHERE id = users.club_id)
+                WHERE users.id NOT IN (
+                    SELECT user_id FROM user_ranking
+                )
+        ";
 
         $query_data = $this->db->createObject($user_ranks_sql, "Add Users Rankings");
     }
