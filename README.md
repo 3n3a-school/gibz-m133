@@ -21,6 +21,10 @@ Afterwards you should make sure, that all requests except for files
 are redirected to the `index.php` file in the _backend_ folder. For Apache
 Servers this should already be present in the `.htaccess` file.
 
+## Import of Ranking Lists
+
+* Can import csv's from `o-l.ch`, where is _kind=all&csv=1_
+* need to go to `import.php`
 
 ### Installation
 

@@ -18,6 +18,10 @@ abstract class Page {
     }
 
     function sendPageWrapper( $tags ) {
+        if ($this->hasAdmin()) {
+            $this->config->menus['person']['Import Ranking'] = "/import.php";
+        }
+
         if ($this->isAuthenticated()) {
             $username = $this->getSessionValueIfExists('username');
             $user = $this->config->controllers['user']->getUserWClub( $username, ["first_name", "last_name", "email", "username"] );
@@ -61,6 +65,35 @@ abstract class Page {
         }
 
         return $contains;
+    }
+
+    /**
+     * Verifies that User has acess rights to import
+     * otherwise redirects to home
+     */
+    function hasAdmin() {
+        $username = $this->getSessionValueIfExists('username');
+        $user_roles_raw = $this->config->controllers['user']->getUserRoles(
+            $username
+        );
+        $user_roles = [];
+
+        if ( ! empty($user_roles_raw) ) {
+            foreach ($user_roles_raw as $role) {
+                array_push( $user_roles, $role['role_name']);
+            }
+        } else {
+            array_push($user_roles, 'user');
+        }
+
+
+        if (
+            ! in_array( 'admin', $user_roles ) ||
+            ! in_array( 'owner', $user_roles )
+        ) {
+            return false;
+        }
+        return true;
     }
 
     /**

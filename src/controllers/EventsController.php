@@ -54,6 +54,19 @@ class EventsController extends \M133\Controller {
             return $data;
         return false;
     }
+
+    public function addEvent( $event ) {
+        $event_sql = "INSERT INTO event (
+            name, place, date, organizer_id
+        ) VALUES (?, ?, FROM_UNIXTIME(?), ?)";
+
+        $this->db->changeData( $event_sql, [
+            $event['name'],
+            $event['place'],
+            strtotime($event['date']),
+            $event['organizer_id'],
+        ], "Event " . $event['name']);
+    }
    
     public function getUserEvents( $user_id ) {
         $get_event_sql = "tbd";

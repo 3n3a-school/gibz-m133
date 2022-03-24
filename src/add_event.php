@@ -6,12 +6,11 @@ include_once __DIR__ . '/config.php';
 
 use M133\Importer as Importer;
 
-class ImportPage extends Page {
+class AddEventPage extends Page {
     public Template $template;
     public Database $database;
     
     function __construct(
-        private $importer,
         public $config
     ) {
         $this->template = $this->config->template;
@@ -34,10 +33,11 @@ class ImportPage extends Page {
 
     function checkIsSubmission() {
         if (
-            $this->arrayHasKeys( $_POST, ['event'] ) &&
-            $this->arrayHasKeys( $_FILES, ['file'] ) &&
-            ! empty($_POST['event']) &&
-            ! empty($_FILES['file'])
+            $this->arrayHasKeys( $_POST, ['name', 'organizer_id', 'date', 'place'] ) &&
+            ! empty($_POST['name']) &&
+            ! empty($_POST['organizer_id']) &&
+            ! empty($_POST['date']) &&
+            ! empty($_POST['place'])
         ) {
             return true;
         }
@@ -45,32 +45,28 @@ class ImportPage extends Page {
     }
 
     function handleFormSubmission() {
-        $this->importer->readCsvFile(
-            $_FILES['file']['tmp_name'],
-            $_POST['event']
+        $this->config->controllers['event']->addEvent(
+            $_POST
         );
-        $this->importer->saveRankingList();
+        echo "Event added successfully";
         exit();
     }
 
     public function sendPage() {
-        $events = $this->config->controllers['event']->getEventList();
-        $event_html = "";
-
-        foreach ($events as $event) {
-            $event_html .= "<option value=\"".$event['id']."\">".$event['name']."</option>";
+        $clubs = $this->config->controllers['club']->getAllClubs();
+        $clubs_html = "";
+        foreach ($clubs as $club) {
+            $clubs_html .= "<option value=\"".$club['id']."\">".$club['name']."</option>";
         }
 
         $this->sendPageWrapper([
-            'title' => 'Import',
-            'app_content' => 'import.html',
-            'event_list' => $event_html
+            'title' => 'Create Event',
+            'app_content' => 'new_event.html',
+            'club_list' => $clubs_html
         ]);
     }
 }
 
-$importer = new Importer( $config );
-$p = new ImportPage(
-    $importer,
+$p = new AddEventPage(
     $config
 );
