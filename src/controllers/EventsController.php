@@ -43,4 +43,15 @@ class EventsController extends \M133\Controller {
             return $data;
         return false;
     }
+   
+    public function getUserEvents( $user_id ) {
+        $get_event_sql = "tbd";
+
+        $query_data = $this->db->queryData($get_event_sql, [$id], "GetUserEvents for " . $user_id);
+        $data = ! empty ($query_data) ? $query_data : NULL;
+
+        if ( ! empty($data) )
+            return $data;
+        return false;
+    }
 }

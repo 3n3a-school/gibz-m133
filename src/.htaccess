@@ -1,4 +1,4 @@
-<FilesMatch "^(config.php|.htaccess)$">
+<FilesMatch "^(config.php|.htaccess|Dockerfile)$">
 Order allow,deny
 Deny from all
 </FilesMatch>

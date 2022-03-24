@@ -2,7 +2,7 @@
 
 namespace M133;
 
-include_once __DIR__ . '/lib/index.php';
+include_once __DIR__ . '/shared/index.php';
 include_once __DIR__ . '/controllers/index.php';
 
 use M133\Filehandler as Filehandler;
@@ -68,7 +68,7 @@ $db_config = new DbConfig(
 
 $db = new Database($db_config);
 
-$views_path = __DIR__ . '/frontend/views/';
+$views_path = __DIR__ . '/views/';
 $templ = new Template($views_path);
 
 $config = new Config($templ, $db);

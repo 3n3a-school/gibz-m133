@@ -3,14 +3,13 @@ services:
     webserver:
         container_name: webserver
         build:
-            context: ./backend
-            dockerfile: Dockerfile
+            context: ./src
+            dockerfile: Containerfile
         depends_on:
             - db
         volumes:
-            - ./backend/src:/var/www/html/
-            - ./backend/lib:/var/www/html/lib
-            - ./frontend:/var/www/html/frontend/
+            # - ./src:/var/www/html/
+            - webserver:/var/www/html/
         environment:
             DB_HOST: db
             DB_PORT: 3306
@@ -50,3 +49,6 @@ services:
 
 networks:
     m133:
+
+volumes:
+    webserver:
