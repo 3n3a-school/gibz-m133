@@ -9,6 +9,7 @@ use M133\Filehandler as Filehandler;
 use M133\DatabaseConfig as DbConfig;
 use M133\Database as Database;
 use M133\Template as Template;
+use M133\Page as Page;
 use M133\Controllers\UserController as UserController;
 use M133\Controllers\EventsController as EventsController;
 use M133\Controllers\CategoriesController as CategoriesController;

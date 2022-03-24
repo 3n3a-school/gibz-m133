@@ -47,7 +47,6 @@ abstract class Page {
     }
 
     public function initRoutes() {
-        // Authentication
         session_start();
         
         header('X-Powered-By: eServer');

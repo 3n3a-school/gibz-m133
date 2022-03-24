@@ -10,6 +10,7 @@ services:
         volumes:
             - ./src:/var/www/html/
             # - webserver:/var/www/html/
+            - webserver_temp:/var/www/temp
         environment:
             DB_HOST: db
             DB_PORT: 3306
@@ -52,3 +53,4 @@ networks:
 
 volumes:
     webserver:
+    webserver_temp:

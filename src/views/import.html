@@ -1,0 +1,38 @@
+<div class="px-4 py-6 sm:px-0">
+    <form class="mt-8 space-y-6" enctype="multipart/form-data" action="/import.php" method="POST">
+        <div class="grid grid-cols-1 gap-2">
+            <label for="file" class="block">
+                <span class="text-gray-700">File</span>
+                <input id="file" name="file" type="file" required class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm">
+            </label>
+            <label for="event" class="block">
+                <span class="text-gray-700">Event</span>
+                <select id="event" name="event" autocomplete="event" required class="
+                block
+                w-full
+                mt-1
+                rounded-md
+                border-gray-300
+                shadow-sm
+                focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+              " placeholder="event">
+                  <option></option>
+                  {{event_list}}
+                </select>
+            </label>
+        </div>
+  
+        <div>
+          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <!-- Heroicon name: solid/cloud-upload -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z" />
+                <path d="M9 13h2v5a1 1 0 11-2 0v-5z" />
+              </svg>
+            </span>
+            Import Ranking List
+          </button>
+        </div>
+      </form>
+</div>

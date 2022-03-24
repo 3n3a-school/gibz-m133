@@ -1,3 +1,6 @@
+# Upload Files
+php_value upload_max_filesize 256M
+
 # Deny Access to following files
 <FilesMatch "^(config.php|.htaccess|Dockerfile)$">
 Order allow,deny

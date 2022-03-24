@@ -50,6 +50,20 @@ class UserController extends \M133\Controller {
         ], "User " . $userinfo['username']);
     }
 
+    public function getUserRoles( $username ) {
+        $user_role_sql = "SELECT role.name AS role_name FROM user_role
+        JOIN users ON user_id = users.id
+        JOIN role ON role_id = role.id
+        WHERE users.username = ?";
+
+        $query_data = $this->db->queryData($user_role_sql, [$username], "UserRole " . $username);
+        $data = ! empty ($query_data) ? $query_data : NULL;
+
+        if ( ! empty($data) )
+            return $data;
+        return false;
+    }
+
     public function usernameTaken( $username ) {
 
         $existance_sql = "SELECT username FROM users WHERE username = ?";

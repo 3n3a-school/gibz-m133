@@ -3,6 +3,39 @@
 namespace M133\Controllers;
 
 class RankingsController extends \M133\Controller {
+
+    /**
+     * Adds ranking array into ranking table
+     * @param $ranking: array
+     */
+    public function addRanking( $ranking ) {
+        $rank_sql = "INSERT INTO ranking (
+            participant_name,
+            event_id,
+            category_id,
+            position,
+            time,
+            birthyear,
+            city,
+            club
+        ) VALUES (
+            ?,
+            ?,
+            (SELECT id FROM category WHERE name = ?), 
+            ?,
+            ?,
+            ?,
+            ?,
+            ?
+        )";
+
+        $this->db->changeData( 
+            $rank_sql, 
+            $ranking, 
+            "Ranking " . $ranking[1]. " " . $ranking[2] . " " . $ranking[3]
+        );
+    }
+
     public function getRanking( $event_id, $category_id ) {
 
         $rank_sql = "SELECT participant_name, position, time, LPAD(birthyear, 2, 0) AS birthyear, city, club, category.name as category_name FROM ranking

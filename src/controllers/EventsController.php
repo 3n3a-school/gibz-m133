@@ -20,6 +20,17 @@ class EventsController extends \M133\Controller {
         return NULL;
     }
 
+    public function getEventList() {
+
+        $event_sql = "SELECT id, name FROM event";
+        $query_data = $this->db->queryData($event_sql, [], "AllEvents List");
+        $data = ! empty ($query_data) ? $query_data : NULL;
+
+        if ( ! empty($data) )
+            return $data;
+        return NULL;
+    }
+
     public function getEventName( $id ) {
         $get_event_sql = "SELECT name FROM event WHERE id = ?";
 
