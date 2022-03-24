@@ -1,5 +1,10 @@
 FROM php:8.0-apache
+
+# Enable Apache Modules
 RUN a2enmod rewrite
+RUN a2enmod headers
+RUN a2enmod deflate
+
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libicu-dev
 
@@ -10,10 +15,10 @@ RUN \
     && docker-php-ext-install pdo_mysql
     
 # PHP International Library
-RUN \
-    docker-php-ext-configure intl \
-    && docker-php-ext-install intl \
-    && docker-php-ext-enable intl
+# RUN \
+#     docker-php-ext-configure intl \
+#     && docker-php-ext-install intl \
+#     && docker-php-ext-enable intl
 
 # COPY . /var/www/html/
 # RUN chown -R www-data:www-data /var/www/html
