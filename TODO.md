@@ -34,7 +34,7 @@ FROM event_meta
 WHERE event_id = ?
 ```
 
-**get event (with organizer club)**
+**get event (with organizer club)** ✅
 
 ```sql
 SELECT event.id, event.name, event.date, event.place, club.name AS club_name
@@ -43,7 +43,7 @@ LEFT JOIN club
 ON event.organizer_id = club.id;
 ```
 
-**get userinfo with club**
+**get userinfo with club** ✅
 
 ```sql
 SELECT first_name, last_name, birthdate, club.name AS club_name, email, is_active, is_verified 
@@ -61,6 +61,31 @@ JOIN ranking ON user_ranking.ranking_id = ranking.id
 JOIN users ON user_ranking.user_id = users.id
 WHERE hidden = FALSE
 AND users.username = ?
+```
+
+**get users rankings (raw)**
+
+```sql
+SELECT * FROM users
+    INNER JOIN ranking 
+    ON ranking.participant_name = (
+        SELECT CONCAT(users.first_name, ' ', users.last_name) AS full_name
+    ) AND
+    ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
+    ranking.club = (SELECT name FROM club WHERE id = users.club_id)
+```
+
+**trigger on ranking -> find users**
+
+```sql
+INSERT INTO user_ranking (user_id, ranking_id)
+	SELECT users.id, ranking.id FROM users
+		INNER JOIN ranking 
+		ON ranking.participant_name = (
+			SELECT CONCAT(users.first_name, ' ', users.last_name) AS full_name
+		) AND
+		ranking.birthyear = DATE_FORMAT(users.birthdate, '%y') AND
+		ranking.club = (SELECT name FROM club WHERE id = users.club_id)
 ```
 
 **get events user participated in**

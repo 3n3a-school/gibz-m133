@@ -65,6 +65,7 @@ class RegisterPage extends Page {
             }
             
             $this->config->controllers['user']->addUser( $registration );
+            $this->config->controllers['rank']->addUserRankings();
     
             error_log("[REGISTER]: " . $registration['username']);
         
