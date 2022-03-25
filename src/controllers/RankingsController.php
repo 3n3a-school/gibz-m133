@@ -43,7 +43,6 @@ class RankingsController extends \M133\Controller {
         WHERE category.id = ?
         AND event_id = ?
         AND ranking.id NOT IN (SELECT ranking_id FROM user_ranking WHERE confirmed = 1 AND hidden = 1)
-        -- make NULLS last in sorting
         ORDER BY -position DESC";
 
         $query_data = $this->db->queryData($rank_sql, [ $category_id, $event_id ], "RankingTable");
@@ -60,7 +59,7 @@ class RankingsController extends \M133\Controller {
     public function getUserRankings( $username ) {
 
         $rank_sql = "SELECT users.id AS user_id, users.username, event.id AS event_id, event.name AS event_name, category.id AS category_id, category.name AS category_name,
-        ranking.position, ranking.time
+        ranking.position, ranking.time, ranking.id AS ranking_id, user_ranking.hidden AS ur_hidden
         FROM user_ranking
         JOIN ranking ON user_ranking.ranking_id = ranking.id
         JOIN users ON user_ranking.user_id = users.id
@@ -96,6 +95,18 @@ class RankingsController extends \M133\Controller {
         ";
 
         $query_data = $this->db->createObject($user_ranks_sql, "Add Users Rankings");
+    }
+
+    public function changeUserRanking( $ranking_id, $username, $hide ) {
+        $hide_ranking_sql = "UPDATE user_ranking SET confirmed = 1, hidden = ?
+        WHERE user_id = (SELECT id FROM users WHERE username = ?) 
+        AND ranking_id = ?";
+
+        $this->db->changeData( 
+            $hide_ranking_sql, 
+            [ $hide, $username, $ranking_id ], 
+            "Hide UserRanking "
+        );
     }
 
 }
