@@ -92,7 +92,7 @@ class TableCreator1000 {
             "event" => [
                 "sql" => "INSERT INTO event (name, organizer_id, date, place) VALUES (?,(SELECT id FROM club WHERE name = ?),FROM_UNIXTIME(?),?)",
                 "values" => [
-                    [ "1. Nationaler OL (Langdistanz)", "OLG Cordoba", strtotime("+3 day"), "Geissberg"],
+                    [ "1. Nationaler OL (Langdistanz)", "OLG Cordoba", strtotime("-3 day"), "Geissberg"],
                 ]
             ],
             "ranking" => [
