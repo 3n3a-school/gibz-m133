@@ -60,6 +60,7 @@ class Config {
     }
 }
 
+// For Docker :)
 $db_config = new DbConfig(
     $_ENV['DB_HOST'],
     $_ENV['DB_PORT'],
@@ -67,6 +68,15 @@ $db_config = new DbConfig(
     $_ENV['DB_USER'],
     $_ENV['DB_PASS'],
 );
+
+// For XAMPP :(
+// $db_config = new DbConfig(
+//     'localhost',
+//     '3306',
+//     'm133', // db name
+//     'm133', //username
+//     '1234', // pw
+// );
 
 $db = new Database($db_config);
 
