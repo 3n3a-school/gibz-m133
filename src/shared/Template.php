@@ -48,10 +48,10 @@ class Template {
             'modal_body' => 'components/modal_body_user.html',
             'modal_ok_btn' => 'Close',
             'modal_no_btn' => 'Cancel',
-            'username' => $user['username'],
-            'full_name' => $user['first_name']. " ". $user['last_name'],
-            'email' => $user['email'],
-            'club' => $user['club_name']
+            'username' => htmlspecialchars($user['username']),
+            'full_name' => htmlspecialchars($user['first_name']. " ". $user['last_name']),
+            'email' =>htmlspecialchars( $user['email']),
+            'club' => htmlspecialchars($user['club_name'])
         ], true);
 
         $tags = [
@@ -64,9 +64,9 @@ class Template {
             'desktop_menu' => $desktop_menu,
             'mobile_menu' => $mobile_menu,
             'user_modal' => $user_modal,
-            'username' => $user['username'],
-            'full_name' => $user['first_name']. " ". $user['last_name'],
-            'email' => $user['email'],
+            'username' => htmlspecialchars($user['username']),
+            'full_name' => htmlspecialchars($user['first_name']. " ". $user['last_name']),
+            'email' => htmlspecialchars($user['email']),
         ];
 
         $tags = array_merge( $tags, $additional_tags );
@@ -110,7 +110,7 @@ class Template {
 
     private function renderMenuItem( $title, $url, $template ) {
         return $this->render($template, [
-            'title' => $title,
+            'title' => htmlspecialchars($title),
             'url' => $url
         ], true);
     }
