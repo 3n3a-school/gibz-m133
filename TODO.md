@@ -21,8 +21,10 @@
 - [x] add events table
 - [x] add club select to registration
 - [x] add event meta in event calender
-- [ ] create importer
-
+- [x] create importer
+- [ ] create rank hiding for user
+- [ ] make everything work in xampp
+- [ ] Homepage show latest events
 
 ## SQL Queries
 
