@@ -89,7 +89,7 @@ abstract class Page {
 
 
         if (
-            ! in_array( 'admin', $user_roles ) ||
+            ! in_array( 'admin', $user_roles ) &&
             ! in_array( 'owner', $user_roles )
         ) {
             return false;

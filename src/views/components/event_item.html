@@ -1,4 +1,12 @@
 <a href="{{url_prefix}}
-{{id}}" class="grow block p-6 bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{name}}</h5>
+{{id}}" class="grow block bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
+    <div class="flex flex-row">
+        <div class="border-r border-gray-400 p-6 justify-center flex flex-col items-center w-1/5 md:w-auto">
+            <p class="text-2xl">{{date_d}}</p>
+            <p class="text-sm">{{date_rest}}</p>
+        </div>   
+        <div class="p-6 text-ellipsis">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 break-all">{{name}}</h5>
+        </div>
+    </div>
 </a>

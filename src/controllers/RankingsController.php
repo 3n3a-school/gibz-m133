@@ -42,6 +42,7 @@ class RankingsController extends \M133\Controller {
         JOIN category ON category_id = category.id
         WHERE category.id = ?
         AND event_id = ?
+        AND ranking.id NOT IN (SELECT ranking_id FROM user_ranking WHERE confirmed = 1 AND hidden = 1)
         -- make NULLS last in sorting
         ORDER BY -position DESC";
 

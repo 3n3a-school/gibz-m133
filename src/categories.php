@@ -40,7 +40,7 @@ class CategoryPage extends Page {
         foreach ($categories as $cat) {
             $name = $cat["name"];
             $id = $cat['id'];
-            $categories_html .= $this->template->render('components/event_item.html', [
+            $categories_html .= $this->template->render('components/category_item.html', [
                 "id"=>$id,
                 "name"=>$name, 
                 "url_prefix"=>"rankings.php?event_id=" . $this->current_event_id . "&category_id=",

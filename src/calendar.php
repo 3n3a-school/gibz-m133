@@ -16,7 +16,13 @@ class CalendarPage extends Page {
             foreach ($events as $event) {
                 $name = $event["name"];
                 $id = $event["id"];
-                $events_html .= $this->template->render('components/event_item.html', ["id"=>$id,"name"=>$name, 'url_prefix' => "details.php?event_id=",], true);
+                $events_html .= $this->template->render('components/event_item.html', [
+                    "id"=>$id,
+                    "name"=>$name, 
+                    'url_prefix' => "details.php?event_id=",
+                    "date_d" => date('d', strtotime($event['date'])),
+                    "date_rest" => date('F, Y', strtotime($event['date']))
+                ], true);
             } 
         } else {
             $events_html = "<p>No Calendar entries found</p>";
