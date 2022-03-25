@@ -79,7 +79,7 @@ class TableCreator1000 {
             ],
             "user_role" => [
                 "sql" => "INSERT INTO user_role (user_id, role_id) VALUES (?,?)",
-                "values" => [ [1, 2] ]
+                "values" => [ [1, 2], [1, 3], [1, 1] ]
             ],
             "category" => [
                 "is-file" => true,
@@ -120,7 +120,7 @@ class TableCreator1000 {
             }
         }
 
-        echo "Finished the filling up of tasty tabels 🤑<br>";
+        echo "Finished the filling up of tasty tables 🤑<br>";
 
     }
     
