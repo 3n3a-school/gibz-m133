@@ -25,6 +25,7 @@
 - [x] create rank hiding for user
 - [x] make everything work in xampp
 - [ ] Homepage show latest events
+- [x] Deployment to prod
 
 ## SQL Queries
 
