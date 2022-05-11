@@ -7,7 +7,7 @@ _Webapplikation mit Session Handling realisieren_
 ### Docker
 
 Start the application with `Docker-Compose`:
-
+ 
 ```bash
 sudo docker-compose up --build -d
 ```
