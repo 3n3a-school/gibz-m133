@@ -16,7 +16,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            3n3a/m307
+            3n3a/m133
           # generate Docker tags based on the following events/attributes
           tags: |
             type=semver,pattern={{version}}
@@ -39,5 +39,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=3n3a/m307:latest
+          cache-from: type=registry,ref=3n3a/m133:latest
           cache-to: type=inline
